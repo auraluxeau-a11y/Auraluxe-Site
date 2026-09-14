@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Auraluxe works</title>
+<meta name="description" content="Choose your sound, personalise your ritual, sleep through to a gentle sunrise. Set it once. Sleep better every night.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<script src="vendor/lucide.js"></script>
+<script src="vendor/react.min.js"></script>
+<script src="vendor/react-dom.min.js"></script>
+<style>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; background: var(--canvas); }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: var(--font-body); color: var(--ink); }
+a { color: var(--link-blue); }
+a:hover { color: var(--link-blue-pressed); }
+::selection { background: var(--brand-purple-300); }
+:root { --gutter: 40px; --sec: 104px; --accent: #7793C7; --accent-deep: #4a659e; }
+
+@keyframes auraDrift  { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-24px,20px) scale(1.05); } }
+@keyframes auraDrift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(22px,-18px) scale(1.06); } }
+@keyframes auraPulse  { 0%,100% { opacity: .82; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+.aura-drift  { animation: auraDrift  17s ease-in-out infinite; }
+.aura-drift2 { animation: auraDrift2 20s ease-in-out infinite; }
+.aura-pulse  { animation: auraPulse  8s  ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .aura-drift,.aura-drift2,.aura-pulse,.how-sun { animation: none; } }
+
+@keyframes auraReveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.aura-reveal { animation: auraReveal .7s cubic-bezier(.22,1,.36,1) both; }
+@supports (animation-timeline: view()) {
+  .aura-reveal { animation-name: auraReveal; animation-timeline: view(); animation-range: entry 2% entry 32%; animation-duration: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .aura-reveal { animation: none !important; opacity: 1 !important; transform: none !important; } }
+
+@keyframes wavePulse { 0%,100% { transform: scaleY(0.45); } 50% { transform: scaleY(1); } }
+
+@keyframes lineFill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.how-line-fill { animation: lineFill 1.1s ease both; }
+@supports (animation-timeline: view()) {
+  .how-line-fill { animation-name: lineFill; animation-timeline: view(); animation-range: entry 10% cover 60%; animation-duration: auto; }
+}
+
+@keyframes sunRise { 0% { bottom: -6px; opacity: .5; } 100% { bottom: 82px; opacity: 1; } }
+.how-sun { animation: sunRise 5s cubic-bezier(.4,0,.2,1) infinite alternate; }
+
+.nav-link:hover { color: var(--ink); }
+
+@media (max-width: 900px) {
+  :root { --sec: 72px; }
+  .how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .how-visual { order: 1 !important; }
+  .how-copy { order: 2 !important; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="js/shared.js"></script>
+<script src="js/how-it-works.js"></script>
+<script>const {
+  useEffect
+} = React;
+function App() {
+  useEffect(() => {
+    if (window.lucide) window.lucide.createIcons();
+  });
+  const cta = () => {
+    window.location.href = "index.html";
+  };
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(HowNav, {
+    onCta: cta
+  }), /*#__PURE__*/React.createElement(HowHero, null), /*#__PURE__*/React.createElement(Journey, null), /*#__PURE__*/React.createElement(HowFinalCta, {
+    onCta: cta
+  }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0d1f3c"/><circle cx="50" cy="50" r="20" fill="none" stroke="#7793C7" stroke-width="4"/><circle cx="58" cy="44" r="14" fill="#0d1f3c"/></svg></template></body>
+</html>

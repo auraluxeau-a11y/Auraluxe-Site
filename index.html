@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auraluxe - Sleep, engineered to feel like nothing at all.</title>
+  <meta name="description" content="The Auraluxe Glow wraps your room in warm light and soft sound - so you fall asleep without trying, and wake up feeling like yourself again. Try it for 100 nights.">
+  <link rel="stylesheet" href="assets/colors_and_type.css">
+  <script src="vendor/lucide.js"></script>
+  <script src="vendor/react.min.js"></script>
+  <script src="vendor/react-dom.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; background: var(--canvas); }
+    body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: var(--font-body); color: var(--ink); }
+    a { color: inherit; }
+    ::selection { background: var(--brand-purple-300); }
+    :root { --gutter: 40px; --sec: 104px; --btn-radius: var(--r-md); }
+
+    /* gentle ambient motion - slow, no bounce */
+    @keyframes auraDrift  { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-24px,20px) scale(1.05); } }
+    @keyframes auraDrift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(22px,-18px) scale(1.06); } }
+    @keyframes auraPulse  { 0%,100% { opacity: .82; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+    .aura-drift  { animation: auraDrift  17s ease-in-out infinite; }
+    .aura-drift2 { animation: auraDrift2 20s ease-in-out infinite; }
+    .aura-pulse  { animation: auraPulse  8s  ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .aura-drift,.aura-drift2,.aura-pulse { animation: none; } }
+
+    /* scroll-reveal - pure CSS, always settles visible */
+    @keyframes auraReveal { from { opacity: 0; transform: translateY(var(--reveal-y, 18px)); } to { opacity: 1; transform: translateY(0); } }
+    .aura-reveal { animation: auraReveal .7s cubic-bezier(.22,1,.36,1) both; }
+    @supports (animation-timeline: view()) {
+      .aura-reveal { animation-name: auraReveal; animation-timeline: view(); animation-range: entry 2% entry 32%; animation-duration: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) { .aura-reveal { animation: none !important; opacity: 1 !important; transform: none !important; } }
+
+    @keyframes compatScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .compat-marquee-track { animation: compatScroll 32s linear infinite; }
+    .compat-marquee:hover .compat-marquee-track { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) { .compat-marquee-track { animation: none; } }
+    .nav-link:hover { color: var(--ink); }
+    .link-accent:hover { text-decoration: underline; }
+    .footer-link:hover { color: var(--ink); }
+    .nav-burger { display: none; }
+    .hero-proof .hero-proof-cue { opacity: .85; transition: opacity .18s ease; }
+    .hero-proof:hover .hero-proof-cue { opacity: 1; text-decoration: underline; }
+    .hero-proof:hover .hero-proof-cue svg { transform: translateY(1px); transition: transform .18s ease; }
+
+    .aura-toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); opacity: 0; background: var(--ink); color: #fff; font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 14px 22px; border-radius: var(--r-full); box-shadow: var(--elev-4); transition: all .3s cubic-bezier(.4,0,.2,1); z-index: 200; display:flex; align-items:center; gap:10px; }
+    .aura-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 980px) {
+      :root { --sec: 80px; }
+      .hero-grid { grid-template-columns: 1fr !important; gap: 36px !important; padding-top: 56px !important; padding-bottom: 64px !important; }
+      .hero-visual { min-height: 340px !important; order: -1; }
+      .hero-h1 { font-size: 52px !important; letter-spacing: -1.6px !important; }
+      .showcase-row { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .pain-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .showcase-row .showcase-copy { order: 2 !important; }
+      .bento-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .bento-cell:first-child { grid-column: span 2 !important; grid-row: auto !important; }
+      .bento-cell.bento-stats { grid-column: span 2 !important; }
+      .faq-wrap { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .faq-head { position: static !important; }
+      .footer-news { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .news-form { justify-self: start !important; }
+      .testi-grid { grid-template-columns: 1fr !important; }
+      .how-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+      .mosaic-grid { grid-template-columns: 1fr !important; }
+      .mosaic-hero { min-height: 440px !important; }
+    }
+    @media (max-width: 720px) {
+      :root { --gutter: 22px; }
+      .nav-links, .nav-cart { display: none !important; }
+      .nav-burger { display: inline-flex !important; }
+      .hero-h1 { font-size: 42px !important; }
+      .section-h { font-size: 32px !important; }
+      .big-quote { font-size: 24px !important; }
+      .atmos-h { font-size: 32px !important; }
+      .bento-grid { grid-template-columns: 1fr !important; }
+      .pain-grid { grid-template-columns: 1fr !important; }
+      .bento-cell:first-child, .bento-cell.bento-stats { grid-column: auto !important; }
+      .bento-stats { gap: 18px !important; }
+      .footer-cols { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div class="aura-toast" id="toast"></div>
+
+  <script src="js/tweaks-panel.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/sections-a.js"></script>
+  <script src="js/sections-b.js"></script>
+  <script src="js/sections-c.js"></script>
+  <script>const {
+  useEffect
+} = React;
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#7793C7",
+  "density": "regular",
+  "corners": "soft",
+  "parallax": true
+} /*EDITMODE-END*/;
+const ACCENT_DEEP = {
+  "#7793C7": "#4a659e",
+  // periwinkle
+  "#3a8fa8": "#26687c",
+  // teal
+  "#4f6fc2": "#37509a",
+  // indigo
+  "#c47a3a": "#7a4a1e" // amber
+};
+const DENSITY = {
+  compact: {
+    sec: "76px",
+    gut: "40px"
+  },
+  regular: {
+    sec: "104px",
+    gut: "40px"
+  },
+  comfy: {
+    sec: "132px",
+    gut: "48px"
+  }
+};
+const CORNERS = {
+  sharp: "4px",
+  soft: "10px",
+  round: "9999px"
+};
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.innerHTML = '';
+  const ic = document.createElement('span');
+  ic.textContent = '✓';
+  ic.style.cssText = 'color:var(--brand-purple-300);font-weight:700';
+  t.appendChild(ic);
+  t.appendChild(document.createTextNode(msg));
+  t.classList.add('show');
+  clearTimeout(window.__tt);
+  window.__tt = setTimeout(() => t.classList.remove('show'), 2400);
+}
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const cta = () => showToast("Added to your order - $99.95, sleep well");
+  const subscribe = () => showToast("You're in - quiet notes only");
+  useEffect(() => {
+    if (window.lucide) window.lucide.createIcons();
+  });
+
+  // apply tweaks to :root
+  useEffect(() => {
+    const r = document.documentElement.style;
+    r.setProperty("--accent", t.accent);
+    r.setProperty("--accent-deep", ACCENT_DEEP[t.accent] || t.accent);
+    const d = DENSITY[t.density] || DENSITY.regular;
+    r.setProperty("--sec", d.sec);
+    r.setProperty("--gutter", d.gut);
+    r.setProperty("--btn-radius", CORNERS[t.corners] || CORNERS.soft);
+  }, [t.accent, t.density, t.corners]);
+
+  // toggle parallax by setting a flag the rows read
+  useEffect(() => {
+    window.__auraParallax = t.parallax;
+  }, [t.parallax]);
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(SaleBanner, null), /*#__PURE__*/React.createElement(TopNav, {
+    onCta: cta
+  }), /*#__PURE__*/React.createElement(Hero, {
+    onCta: cta
+  }), /*#__PURE__*/React.createElement(HeroTrust, null), /*#__PURE__*/React.createElement(CompatibilityStrip, null), /*#__PURE__*/React.createElement(FeaturedIn, {
+    onCta: cta
+  }), /*#__PURE__*/React.createElement(Timeline, null), /*#__PURE__*/React.createElement(Showcase, null), /*#__PURE__*/React.createElement(Bento, null), /*#__PURE__*/React.createElement(Comparison, null), /*#__PURE__*/React.createElement(AtmosphereBand, null), /*#__PURE__*/React.createElement(LifestyleMosaic, {
+    onCta: cta
+  }), /*#__PURE__*/React.createElement(Testimonials, null), /*#__PURE__*/React.createElement(RiskReversal, null), /*#__PURE__*/React.createElement(Faq, null), /*#__PURE__*/React.createElement(FinalCta, {
+    onCta: cta
+  }), /*#__PURE__*/React.createElement(Footer, {
+    onSubscribe: subscribe
+  }), /*#__PURE__*/React.createElement(TweaksPanel, null, /*#__PURE__*/React.createElement(TweakSection, {
+    label: "Brand"
+  }), /*#__PURE__*/React.createElement(TweakColor, {
+    label: "Accent",
+    value: t.accent,
+    options: ["#7793C7", "#3a8fa8", "#4f6fc2", "#c47a3a"],
+    onChange: v => setTweak("accent", v)
+  }), /*#__PURE__*/React.createElement(TweakRadio, {
+    label: "Corners",
+    value: t.corners,
+    options: ["sharp", "soft", "round"],
+    onChange: v => setTweak("corners", v)
+  }), /*#__PURE__*/React.createElement(TweakSection, {
+    label: "Layout"
+  }), /*#__PURE__*/React.createElement(TweakRadio, {
+    label: "Density",
+    value: t.density,
+    options: ["compact", "regular", "comfy"],
+    onChange: v => setTweak("density", v)
+  }), /*#__PURE__*/React.createElement(TweakToggle, {
+    label: "Parallax imagery",
+    value: t.parallax,
+    onChange: v => setTweak("parallax", v)
+  })));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0d1f3c"/><circle cx="50" cy="50" r="20" fill="none" stroke="#7793C7" stroke-width="4"/><circle cx="58" cy="44" r="14" fill="#0d1f3c"/></svg></template></body>
+</html>
