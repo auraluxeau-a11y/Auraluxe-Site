@@ -66,9 +66,7 @@ function App() {
   useEffect(() => {
     if (window.lucide) window.lucide.createIcons();
   });
-  const cta = () => {
-    window.location.href = "index.html";
-  };
+  const cta = () => buyNow(1);
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(HowNav, {
     onCta: cta
   }), /*#__PURE__*/React.createElement(HowHero, null), /*#__PURE__*/React.createElement(Journey, null), /*#__PURE__*/React.createElement(HowFinalCta, {

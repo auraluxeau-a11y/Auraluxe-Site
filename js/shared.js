@@ -268,3 +268,19 @@ Object.assign(window, {
   Glow,
   Reveal
 });
+/* ---------- Shopify checkout (cart permalink) ---------- */
+const SHOP = {
+  domain: "auraluxe1.myshopify.com",   // swap to shop.auraluxe.com once the branded domain is live
+  variant: "48519605813539",           // Glow Lamp variant id
+  discount: "SPRING20",                // auto-applied at checkout; "" to disable
+  skipCart: true,                      // go straight to checkout instead of the cart page
+};
+function buyNow(qty = 1) {
+  const p = new URLSearchParams();
+  if (SHOP.discount) p.set("discount", SHOP.discount);
+  if (SHOP.skipCart) p.set("return_to", "/checkout");
+  const q = p.toString();
+  window.location.href = `https://${SHOP.domain}/cart/${SHOP.variant}:${qty}` + (q ? "?" + q : "");
+}
+
+Object.assign(window, { SHOP, buyNow });

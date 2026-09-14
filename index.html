@@ -147,7 +147,7 @@ function showToast(msg) {
 }
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-  const cta = () => showToast("Added to your order - $99.95, sleep well");
+  const cta = () => buyNow(1);
   const subscribe = () => showToast("You're in - quiet notes only");
   useEffect(() => {
     if (window.lucide) window.lucide.createIcons();
