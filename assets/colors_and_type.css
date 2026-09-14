@@ -1,0 +1,304 @@
+/* ============================================================
+   AURALUXE — Design System Foundations
+   Premium sleep & sound wellness brand
+   Fonts: Poppins (headings) + DM Sans (body/UI)
+   Self-hosted locally — see fonts/ folder + @font-face rules below.
+   ============================================================ */
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/DMSans-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/DMSans-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/DMSans-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/DMSans-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/DMSans-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/DMSans-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/DMSans-700-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/DMSans-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Poppins-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Poppins-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/Poppins-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/Poppins-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/Poppins-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/Poppins-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/Poppins-700-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/Poppins-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* ---- Brand & Primary ---- */
+  --aura-logo-blue: #004AAD;       /* the cobalt mark color (logo only) */
+  --primary: #7793C7;              /* periwinkle — signature CTA */
+  --primary-pressed: #5f7ab8;
+  --primary-deep: #4a659e;
+  --on-primary: #ffffff;
+
+  --brand-navy: #0d1f3c;           /* deep navy hero band */
+  --brand-navy-deep: #091528;
+  --brand-navy-mid: #1b3160;
+
+  --link-blue: #2563eb;
+  --link-blue-pressed: #1d4ed8;
+
+  /* ---- Brand accent spectrum ---- */
+  --brand-orange: #c47a3a;
+  --brand-orange-deep: #7a4a1e;
+  --brand-pink: #e8a0bf;
+  --brand-pink-deep: #7a3d5a;
+  --brand-purple: #4f6fc2;
+  --brand-purple-300: #b8caea;
+  --brand-purple-800: #1e2d52;
+  --brand-teal: #3a8fa8;
+  --brand-green: #3a9e6e;
+  --brand-yellow: #f0c060;
+  --brand-brown: #4a3828;
+
+  /* ---- Card tints (pastel feature backgrounds) ---- */
+  --card-tint-peach: #fce8d5;
+  --card-tint-rose: #f5dde8;
+  --card-tint-mint: #d4eee8;
+  --card-tint-lavender: #d8e4f5;
+  --card-tint-sky: #d0e5f7;
+  --card-tint-yellow: #fef3d0;
+  --card-tint-yellow-bold: #f7e08a;
+  --card-tint-cream: #f5f3ee;
+  --card-tint-gray: #f0eeec;
+
+  /* ---- Surfaces ---- */
+  --canvas: #ffffff;
+  --surface: #f6f5f4;
+  --surface-soft: #fafaf9;
+  --hairline: #e5e3df;
+  --hairline-soft: #ede9e4;
+  --hairline-strong: #c8c4be;
+
+  /* ---- Text / ink ---- */
+  --ink-deep: #000000;
+  --ink: #1a1a1a;
+  --charcoal: #37352f;
+  --slate: #5d5b54;
+  --steel: #787671;
+  --stone: #a4a097;
+  --muted: #bbb8b1;
+  --on-dark: #ffffff;
+  --on-dark-muted: #a4a097;
+
+  /* ---- Semantic ---- */
+  --success: #3a9e6e;
+  --warning: #c47a3a;
+  --error: #e03131;
+
+  /* ---- Type families ---- */
+  --font-head: 'Poppins', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+  --font-body: 'DM Sans', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+
+  /* ---- Radius scale ---- */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-xxl: 20px;
+  --r-xxxl: 24px;
+  --r-full: 9999px;
+
+  /* ---- Spacing scale (4px base) ---- */
+  --s-xxs: 4px;
+  --s-xs: 8px;
+  --s-sm: 12px;
+  --s-md: 16px;
+  --s-lg: 20px;
+  --s-xl: 24px;
+  --s-xxl: 32px;
+  --s-xxxl: 40px;
+  --s-section-sm: 48px;
+  --s-section: 64px;
+  --s-section-lg: 96px;
+  --s-hero: 120px;
+
+  /* ---- Elevation ---- */
+  --elev-1: rgba(15, 15, 15, 0.04) 0px 1px 2px 0px;
+  --elev-2: rgba(15, 15, 15, 0.08) 0px 4px 12px 0px;
+  --elev-3: rgba(15, 15, 15, 0.20) 0px 24px 48px -8px;   /* hero mockup */
+  --elev-4: rgba(15, 15, 15, 0.16) 0px 16px 48px -8px;   /* modals */
+  --glow-soft: 0 0 40px rgba(119, 147, 199, 0.35);       /* gentle periwinkle glow */
+}
+
+/* ============================================================
+   BASE TYPE STYLES — semantic helpers
+   ============================================================ */
+
+.aura-hero-display {
+  font-family: var(--font-head);
+  font-size: 80px; font-weight: 600; line-height: 1.05; letter-spacing: -2px;
+}
+.aura-display-lg {
+  font-family: var(--font-head);
+  font-size: 56px; font-weight: 600; line-height: 1.10; letter-spacing: -1px;
+}
+.aura-h1 {
+  font-family: var(--font-head);
+  font-size: 48px; font-weight: 600; line-height: 1.15; letter-spacing: -0.5px;
+}
+.aura-h2 {
+  font-family: var(--font-head);
+  font-size: 36px; font-weight: 600; line-height: 1.20; letter-spacing: -0.5px;
+}
+.aura-h3 {
+  font-family: var(--font-head);
+  font-size: 28px; font-weight: 600; line-height: 1.25;
+}
+.aura-h4 {
+  font-family: var(--font-head);
+  font-size: 22px; font-weight: 600; line-height: 1.30;
+}
+.aura-h5 {
+  font-family: var(--font-head);
+  font-size: 18px; font-weight: 600; line-height: 1.40;
+}
+.aura-subtitle {
+  font-family: var(--font-body);
+  font-size: 18px; font-weight: 400; line-height: 1.50;
+}
+.aura-body {
+  font-family: var(--font-body);
+  font-size: 16px; font-weight: 400; line-height: 1.55;
+}
+.aura-body-medium {
+  font-family: var(--font-body);
+  font-size: 16px; font-weight: 500; line-height: 1.55;
+}
+.aura-body-sm {
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 400; line-height: 1.50;
+}
+.aura-body-sm-medium {
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 500; line-height: 1.50;
+}
+.aura-caption {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 400; line-height: 1.40;
+}
+.aura-caption-bold {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 600; line-height: 1.40;
+}
+.aura-micro {
+  font-family: var(--font-body);
+  font-size: 12px; font-weight: 500; line-height: 1.40;
+}
+.aura-micro-uppercase {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 600; line-height: 1.40; letter-spacing: 1px;
+  text-transform: uppercase;
+}
