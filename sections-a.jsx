@@ -173,7 +173,7 @@ function CompatibilityStrip() {
         <div className="compat-marquee-track" style={{ display: "flex", width: "max-content", gap: 56, alignItems: "center" }}>
           {track.map((c, i) => (
             <div key={c.label + i} style={{ display: "inline-flex", alignItems: "center", gap: 10, fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 500, color: "var(--charcoal)", whiteSpace: "nowrap" }}>
-              <img src={c.img || `https://api.iconify.design/${c.iconify}.svg?color=%237793C7`} width="22" height="22" alt="" style={{ display: "block", flexShrink: 0, objectFit: "contain", borderRadius: c.radius || 0 }} />
+              <img src={c.img} width="22" height="22" alt="" style={{ display: "block", flexShrink: 0, objectFit: "contain", borderRadius: c.radius || 0 }} />
               {c.label}
             </div>
           ))}

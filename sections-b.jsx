@@ -326,9 +326,9 @@ function Footer({ onSubscribe }) {
               ].map(([label, slug]) => (
                 <a key={label} href="#" onClick={(e) => e.preventDefault()} aria-label={label}
                   style={{ width: 38, height: 38, borderRadius: "50%", border: "1px solid var(--hairline)", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none", transition: "border-color .16s ease" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--hairline-strong)"; e.currentTarget.querySelector("img").src = `https://cdn.simpleicons.org/${slug}/1a1a1a`; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.querySelector("img").src = `https://cdn.simpleicons.org/${slug}/787671`; }}>
-                  <img src={`https://cdn.simpleicons.org/${slug}/787671`} width="17" height="17" alt="" style={{ display: "block" }} />
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--hairline-strong)"; e.currentTarget.querySelector("img").src = `assets/social-${slug}-dark.svg`; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.querySelector("img").src = `assets/social-${slug}.svg`; }}>
+                  <img src={`assets/social-${slug}.svg`} width="17" height="17" alt="" style={{ display: "block" }} />
                 </a>
               ))}
             </div>
