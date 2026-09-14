@@ -280,6 +280,7 @@ function buyNow(qty = 1) {
   if (SHOP.discount) p.set("discount", SHOP.discount);
   if (SHOP.skipCart) p.set("return_to", "/checkout");
   const q = p.toString();
+  if (window.fbq) fbq('track', 'InitiateCheckout', { content_ids: [SHOP.variant], value: 99.95, currency: 'AUD', num_items: qty });
   window.location.href = `https://${SHOP.domain}/cart/${SHOP.variant}:${qty}` + (q ? "?" + q : "");
 }
 
