@@ -52,7 +52,9 @@
 
     /* ---------- responsive ---------- */
     @media (max-width: 980px) {
-      :root { --sec: 80px; }
+      body { --sec: 80px; }
+      .timeline-row { grid-template-columns: repeat(3, 1fr) !important; row-gap: 40px !important; }
+      .timeline-row > div:first-child { display: none !important; }
       .hero-grid { grid-template-columns: 1fr !important; gap: 36px !important; padding-top: 56px !important; padding-bottom: 64px !important; }
       .hero-visual { min-height: 340px !important; order: -1; }
       .hero-h1 { font-size: 52px !important; letter-spacing: -1.6px !important; }
@@ -71,9 +73,15 @@
       .mosaic-grid { grid-template-columns: 1fr !important; }
       .mosaic-hero { min-height: 440px !important; }
     }
+    @media (max-width: 960px) {
+      .nav-links, .nav-cart, .nav-cta-wrap { display: none !important; }
+      .nav-burger { display: inline-flex !important; }
+    }
     @media (max-width: 720px) {
-      :root { --gutter: 22px; }
-      .nav-links, .nav-cart { display: none !important; }
+      /* density tweaks write --gutter/--sec inline on <html>; redeclaring on body
+         wins by inheritance so mobile spacing is never overridden */
+      body { --gutter: 20px; --sec: 68px; }
+      .nav-links, .nav-cart, .nav-cta-wrap { display: none !important; }
       .nav-burger { display: inline-flex !important; }
       .hero-h1 { font-size: 42px !important; }
       .section-h { font-size: 32px !important; }
@@ -84,6 +92,24 @@
       .bento-cell:first-child, .bento-cell.bento-stats { grid-column: auto !important; }
       .bento-stats { gap: 18px !important; }
       .footer-cols { grid-template-columns: 1fr 1fr !important; }
+      /* timeline: stack into a vertical list, icon beside the copy */
+      .timeline-row { grid-template-columns: 1fr !important; row-gap: 26px !important; }
+      .timeline-row > div + div { display: grid !important; grid-template-columns: 54px 1fr; column-gap: 16px; row-gap: 3px; align-items: start; text-align: left !important; padding: 0 !important; }
+      .timeline-row > div + div > div:first-child { grid-row: 1 / 4; width: 54px !important; height: 54px !important; margin-bottom: 0 !important; }
+      .timeline-row > div + div > div:first-child svg { width: 24px; height: 24px; }
+      .timeline-row > div + div > p { max-width: none !important; }
+      /* comparison table keeps its own horizontal scroll, just less of it */
+      .cmp-table > div { min-width: 560px !important; }
+      .mosaic-hero { min-height: 400px !important; }
+      .hero-visual { min-height: 0 !important; }
+      .news-form { flex-wrap: wrap !important; }
+      .news-form input { min-width: 0 !important; }
+    }
+    @media (max-width: 420px) {
+      .hero-h1 { font-size: 36px !important; letter-spacing: -1.2px !important; }
+      .section-h, .atmos-h { font-size: 28px !important; }
+      .hero-cta > *, .hero-cta button { width: 100% !important; }
+      .footer-cols { grid-template-columns: 1fr !important; }
     }
   </style>
 <!-- Meta Pixel Code -->

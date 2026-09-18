@@ -48,10 +48,24 @@ a:hover { color: var(--link-blue-pressed); }
 .nav-link:hover { color: var(--ink); }
 
 @media (max-width: 900px) {
-  :root { --sec: 72px; }
+  body { --sec: 72px; }
   .how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   .how-visual { order: 1 !important; }
   .how-copy { order: 2 !important; }
+}
+@media (max-width: 720px) {
+  body { --gutter: 20px; --sec: 64px; }
+  .nav-cta-wrap { display: none !important; }
+  .how-step-marker { display: none !important; }
+  .how-journey-row { gap: 0 !important; }
+  .how-journey-row > div:last-child { padding-bottom: 56px !important; }
+  .evening-timeline { margin-top: 40px !important; }
+  .evening-timeline > div:first-child { display: none !important; }
+  .evening-timeline > div:last-child { grid-template-columns: 1fr 1fr !important; row-gap: 28px !important; }
+  .how-step3 { padding: 44px 22px !important; }
+}
+@media (max-width: 420px) {
+  .aura-hero-display { font-size: 38px !important; letter-spacing: -1.2px !important; }
 }
 </style>
 <!-- Meta Pixel Code -->

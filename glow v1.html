@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Auraluxe Glow — sound machine and warm sleep lamp</title>
+<meta name="description" content="Cover the noise, warm the light, and let the room tell you it's time. The Auraluxe Glow is a bedside sound machine and 1800K sleep lamp in one. 100 nights to try it. Free shipping across Australia.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0;background:var(--canvas)}
+body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:root{--gutter:40px;--sec:104px;--accent:#7793C7;--accent-deep:#4a659e;--ease:cubic-bezier(.4,0,.2,1)}
+img{display:block;max-width:100%}
+a{color:var(--charcoal)}
+a:hover{color:var(--ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+::selection{background:var(--brand-purple-300)}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:var(--gutter)}
+.eyebrow{font-size:11.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent)}
+h2{font-family:var(--font-head);font-weight:600;font-size:40px;letter-spacing:-1.3px;line-height:1.1;margin:14px 0 0;color:var(--ink);text-wrap:balance}
+h3{font-family:var(--font-head);font-weight:600;letter-spacing:-.3px;color:var(--ink);margin:0}
+.sub{font-size:17.5px;line-height:1.6;color:var(--charcoal);max-width:56ch;margin:18px 0 0;text-wrap:pretty}
+.sec{padding-block:var(--sec)}
+.band{background:var(--surface);border-block:1px solid var(--hairline)}
+.btn{font-family:var(--font-body);font-size:15px;font-weight:500;line-height:1.3;border-radius:var(--r-md);padding:12px 22px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;background:var(--accent);color:#fff;text-decoration:none;transition:background .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
+.btn:hover{background:var(--accent-deep);color:#fff;transform:translateY(-1px);box-shadow:var(--elev-2)}
+.btn:active{transform:scale(.99)}
+.btn-lg{font-size:16.5px;padding:17px 30px;width:100%}
+.btn-ghost{background:transparent;color:var(--charcoal);border-color:var(--hairline-strong)}
+.btn-ghost:hover{background:var(--surface);color:var(--ink);box-shadow:none}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+/* announcement + nav */
+.banner{background:var(--brand-navy);color:rgba(255,255,255,.9);font-size:12.5px;letter-spacing:.2px;text-align:center;padding:9px 16px}
+.nav{position:sticky;top:0;z-index:60;background:rgba(250,250,249,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--hairline)}
+.nav-inner{height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+.brand img{height:27px;width:27px;object-fit:contain}
+.brand span{font-family:var(--font-head);font-weight:500;font-size:20px;letter-spacing:.4px;color:var(--aura-logo-blue)}
+.nav-links{display:flex;gap:26px;font-size:14.5px;font-weight:500}
+.nav-links a{color:var(--steel);text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+/* ============ HERO / PDP ============ */
+.pdp{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;padding-block:44px var(--sec);align-items:start}
+.gallery{position:sticky;top:96px}
+.stage{position:relative;overflow:hidden;border-radius:var(--r-xxxl);background:var(--surface);border:1px solid var(--hairline);aspect-ratio:1/1;display:grid;place-items:center}
+.stage .halo{position:absolute;width:76%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle,rgba(119,147,199,.3) 0%,transparent 66%);filter:blur(14px);pointer-events:none;animation:halo 10s var(--ease) infinite}
+@keyframes halo{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s var(--ease)}
+.stage img.contain{object-fit:contain;padding:6%}
+.stage .slot{position:absolute;z-index:2;inset:0;display:none;place-items:center;text-align:center;padding:12%;background:var(--surface)}
+.stage .slot span{font-size:14px;line-height:1.6;color:var(--steel);max-width:30ch}
+.stage.is-slot .slot{display:grid}
+.stage.is-slot img,.stage.is-slot .halo{opacity:0}
+.stage-tag{position:absolute;z-index:3;left:18px;bottom:18px;font-size:12px;font-weight:500;color:var(--charcoal);background:rgba(255,255,255,.82);backdrop-filter:blur(8px);border-radius:var(--r-full);padding:7px 14px}
+.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:12px}
+.thumb{position:relative;padding:0;border:1px solid var(--hairline);background:var(--surface-soft);border-radius:var(--r-lg);overflow:hidden;aspect-ratio:1/1;cursor:pointer;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-head);font-size:10px;font-weight:600;letter-spacing:.4px;color:var(--stone);text-transform:uppercase;padding:6px;text-align:center;line-height:1.3}
+.thumb:hover{border-color:var(--hairline-strong)}
+.thumb[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+/* buy box */
+h1{font-family:var(--font-head);font-weight:600;font-size:50px;letter-spacing:-1.8px;line-height:1.05;margin:14px 0 0;color:var(--ink);text-wrap:balance}
+.vp{font-size:19.5px;line-height:1.5;color:var(--charcoal);margin:18px 0 0;max-width:34ch;text-wrap:pretty}
+.ratingline{display:flex;align-items:center;gap:10px;margin-top:20px;font-size:13.5px;color:var(--steel);flex-wrap:wrap}
+.stars{display:flex;gap:2px}
+.ratingline a{color:var(--charcoal);text-decoration:underline;text-decoration-color:var(--hairline-strong);text-underline-offset:3px}
+.bullets{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.bullets li{display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:15.5px;line-height:1.5;color:var(--charcoal);text-wrap:pretty}
+.bullets svg{color:var(--accent);margin-top:2px}
+.pricebox{margin-top:32px;padding-top:26px;border-top:1px solid var(--hairline)}
+.pricerow{display:flex;align-items:baseline;gap:12px}
+.price{font-family:var(--font-head);font-weight:600;font-size:36px;letter-spacing:-1.1px;color:var(--ink);font-feature-settings:"tnum"}
+.instal{font-size:13.5px;color:var(--steel);margin-top:10px}
+.cta-wrap{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.micro{font-size:13px;color:var(--steel);margin-top:14px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.micro b{font-weight:500;color:var(--charcoal)}
+.dot-live{width:7px;height:7px;border-radius:50%;background:var(--brand-green);display:inline-block;margin-right:7px}
+.assure{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;margin-top:26px;padding-top:24px;border-top:1px solid var(--hairline)}
+.assure div{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:14px;line-height:1.45;color:var(--charcoal)}
+.assure svg{color:var(--accent);margin-top:2px}
+/* ============ BENEFITS ============ */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.bcard{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xxl);padding:30px;display:flex;flex-direction:column}
+.bcard .ic{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;margin-bottom:22px}
+.bcard h3{font-size:20px;margin-bottom:10px}
+.bcard p{font-size:15px;line-height:1.62;color:var(--slate);margin:0;text-wrap:pretty}
+.bcard .feat{font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--stone);margin-top:18px;padding-top:14px;border-top:1px solid var(--hairline)}
+/* ============ SOUND ============ */
+.sound-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.sound{text-align:left;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xl);padding:22px;cursor:pointer;font-family:var(--font-body);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;transition:border-color .2s var(--ease),background .2s var(--ease),box-shadow .2s var(--ease)}
+.sound:hover{border-color:var(--hairline-strong);box-shadow:var(--elev-1)}
+.sound[aria-pressed="true"]{border-color:var(--accent);background:var(--card-tint-lavender)}
+.sound strong{display:block;font-size:16px;font-weight:500;color:var(--ink)}
+.sound em{display:block;font-style:normal;font-size:13.5px;line-height:1.5;color:var(--steel);margin-top:4px}
+.play{width:40px;height:40px;border-radius:50%;background:var(--surface);display:grid;place-items:center;color:var(--accent-deep);flex:none}
+.sound[aria-pressed="true"] .play{background:var(--accent);color:#fff}
+.sound.no-audio{cursor:default;opacity:.92}
+.sound.no-audio .play{background:transparent;border:1px dashed var(--hairline-strong);color:var(--stone)}
+.eq{display:flex;align-items:flex-end;gap:2px;height:13px}
+.eq i{width:2.5px;background:currentColor;border-radius:2px;height:35%;animation:eq 1s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:.18s}.eq i:nth-child(3){animation-delay:.36s}.eq i:nth-child(4){animation-delay:.54s}
+@keyframes eq{0%,100%{height:30%}50%{height:100%}}
+.note{font-size:13px;line-height:1.6;color:var(--steel);margin-top:24px;max-width:66ch}
+/* ============ STEPS ============ */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;counter-reset:s}
+.step{position:relative}
+.step-img{border-radius:var(--r-xxl);overflow:hidden;background:var(--surface);border:1px solid var(--hairline);aspect-ratio:4/3}
+.step-img img{width:100%;height:100%;object-fit:cover}
+.step .n{font-family:var(--font-head);font-weight:600;font-size:13px;letter-spacing:1px;color:var(--accent);margin-top:22px}
+.step h3{font-size:21px;margin:10px 0 8px}
+.step p{font-size:15px;line-height:1.6;color:var(--slate);margin:0;text-wrap:pretty}
+/* ============ COMPARE ============ */
+.table{width:100%;border-collapse:collapse;margin-top:44px;font-size:15px}
+.table th,.table td{text-align:left;padding:17px 20px;border-bottom:1px solid var(--hairline);vertical-align:top}
+.table thead th{font-family:var(--font-head);font-weight:600;font-size:14.5px;color:var(--ink);border-bottom:1px solid var(--hairline-strong);white-space:nowrap}
+.table thead th:first-child{color:var(--steel);font-family:var(--font-body);font-weight:500}
+.table tbody th{font-weight:400;color:var(--charcoal);width:30%}
+.table td{color:var(--slate)}
+.table .own{background:var(--card-tint-lavender);color:var(--ink)}
+.table thead .own{border-radius:var(--r-lg) var(--r-lg) 0 0}
+.yes{display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+.yes svg{color:var(--brand-green);flex:none}
+/* ============ USE CASES ============ */
+.cases{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.case{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xl);padding:24px}
+.case svg{color:var(--accent);margin-bottom:16px}
+.case b{display:block;font-family:var(--font-head);font-weight:600;font-size:16.5px;color:var(--ink);margin-bottom:7px}
+.case p{font-size:14px;line-height:1.55;color:var(--slate);margin:0;text-wrap:pretty}
+/* ============ REVIEWS ============ */
+.rev-top{display:grid;grid-template-columns:auto 1fr auto;gap:56px;align-items:center;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xxxl);padding:34px 40px;margin-top:44px}
+.score{font-family:var(--font-head);font-weight:600;font-size:60px;letter-spacing:-2px;line-height:1;color:var(--ink)}
+.rev-meta{font-size:13.5px;color:var(--steel);margin-top:8px}
+.bars{display:flex;flex-direction:column;gap:8px}
+.bar-row{display:grid;grid-template-columns:30px 1fr 36px;align-items:center;gap:12px;font-size:13px;color:var(--steel)}
+.bar{height:7px;border-radius:var(--r-full);background:var(--surface);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:var(--r-full);background:var(--accent)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.rev{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xxl);padding:26px;display:flex;flex-direction:column;gap:13px}
+.rev-head{display:flex;align-items:flex-start;gap:12px}
+.who{font-size:14px;font-weight:600;color:var(--ink)}
+.verified{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--brand-teal);margin-top:3px}
+.rev time{font-size:12.5px;color:var(--stone);margin-left:auto;white-space:nowrap}
+.rev h3{font-size:17px}
+.rev p{font-size:14.5px;line-height:1.62;color:var(--slate);margin:0;text-wrap:pretty}
+/* ============ SPECS / BOX ============ */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:44px}
+.spec{display:grid;grid-template-columns:1fr auto;gap:20px;padding:15px 0;border-bottom:1px solid var(--hairline);font-size:14.5px;margin:0}
+.spec dt{color:var(--steel)}
+.spec dd{margin:0;color:var(--ink);font-weight:500;text-align:right}
+.box{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.box li{display:grid;grid-template-columns:22px 1fr;gap:13px;padding:14px 0;border-bottom:1px solid var(--hairline);font-size:15px;line-height:1.5;color:var(--charcoal)}
+.box svg{color:var(--accent);margin-top:2px}
+/* ============ SAFETY ============ */
+.safety{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.rules{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+.rules li{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:15px 0;border-top:1px solid var(--hairline);font-size:15px;line-height:1.55;color:var(--charcoal);text-wrap:pretty}
+.rules li:last-child{border-bottom:1px solid var(--hairline)}
+.rules b{color:var(--ink);font-weight:500}
+.rules .num{font-family:var(--font-head);font-weight:600;font-size:13px;color:var(--accent);padding-top:2px}
+.photo{border-radius:var(--r-xxxl);overflow:hidden;box-shadow:var(--elev-2);background:var(--surface)}
+.photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+/* ============ FAQ ============ */
+.faq{max-width:880px;margin:44px auto 0}
+.faq details{border-bottom:1px solid var(--hairline)}
+.faq details:first-of-type{border-top:1px solid var(--hairline)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;font-size:16.5px;font-weight:500;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:9px;height:9px;border-right:1.6px solid var(--stone);border-bottom:1.6px solid var(--stone);transform:rotate(45deg) translateY(-2px);transition:transform .25s var(--ease);flex:none}
+.faq details[open] summary::after{transform:rotate(225deg) translateY(-2px)}
+.faq p{font-size:15.5px;line-height:1.7;color:var(--slate);margin:0 0 22px;max-width:70ch;text-wrap:pretty}
+/* ============ GUARANTEE + FINAL ============ */
+.guar{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.gcard{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xxl);padding:28px}
+.gcard svg{color:var(--accent);margin-bottom:18px}
+.gcard b{display:block;font-family:var(--font-head);font-weight:600;font-size:17px;color:var(--ink);margin-bottom:8px}
+.gcard p{font-size:14.5px;line-height:1.6;color:var(--slate);margin:0;text-wrap:pretty}
+.final{position:relative;overflow:hidden;background:var(--brand-navy);color:#fff;text-align:center;padding-block:calc(var(--sec) + 8px)}
+.final .halo2{position:absolute;top:50%;left:50%;width:640px;height:640px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(119,147,199,.28) 0%,transparent 66%);filter:blur(14px);pointer-events:none;animation:halo 12s var(--ease) infinite}
+.final h2{color:#fff;font-size:46px;letter-spacing:-1.6px}
+.final p{font-size:18px;line-height:1.55;color:rgba(255,255,255,.8);max-width:460px;margin:20px auto 0}
+.final .cta{max-width:340px;margin:32px auto 0}
+.final .fmicro{font-size:13.5px;color:var(--on-dark-muted);margin-top:18px}
+.foot{padding-block:36px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--stone);border-top:1px solid var(--hairline)}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+.foot a{text-decoration:none;color:var(--stone)}
+.foot a:hover{color:var(--ink)}
+/* proof strip */
+.proof{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-xxxl);padding:28px 34px}
+.proof .score{font-family:var(--font-head);font-weight:600;font-size:44px;letter-spacing:-1.4px;line-height:1;color:var(--ink)}
+.proof .rev-meta{font-size:13px;color:var(--steel);margin-top:7px}
+.quotes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
+.quotes blockquote{margin:0;font-size:14.5px;line-height:1.6;color:var(--charcoal);text-wrap:pretty}
+.quotes cite{display:block;font-style:normal;font-size:12.5px;color:var(--stone);margin-top:8px}
+.mini{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.mini li{display:grid;grid-template-columns:19px 1fr;gap:12px;font-size:15px;line-height:1.5;color:var(--charcoal);text-wrap:pretty}
+.mini svg{color:var(--accent);margin-top:2px}
+.mini b{color:var(--ink);font-weight:500}
+.rowline{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:44px;padding-top:26px;border-top:1px solid var(--hairline)}
+.rowline div{display:grid;grid-template-columns:19px 1fr;gap:11px;font-size:14.5px;line-height:1.45;color:var(--charcoal);max-width:260px}
+.rowline svg{color:var(--accent);margin-top:2px}
+.rowline b{color:var(--ink);font-weight:500;display:block}
+@media (max-width:980px){.proof{grid-template-columns:1fr;gap:24px}.quotes{grid-template-columns:1fr}}
+/* sticky mobile bar */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;align-items:center;gap:14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(250,250,249,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--hairline);transform:translateY(110%);transition:transform .3s var(--ease)}
+.sticky.show{transform:none}
+.sticky .s-price{font-family:var(--font-head);font-weight:600;font-size:19px;letter-spacing:-.5px;color:var(--ink);font-feature-settings:"tnum"}
+.sticky .s-sub{font-size:11.5px;color:var(--steel);margin-top:2px}
+.sticky .btn{flex:1}
+.toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:#fff;font-size:14px;font-weight:500;padding:14px 22px;border-radius:var(--r-full);box-shadow:var(--elev-4);transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:90;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%)}
+@media (prefers-reduced-motion:reduce){.halo,.halo2,.eq i{animation:none}}
+/* ============ RESPONSIVE ============ */
+@media (max-width:1040px){
+  :root{--sec:80px}
+  .pdp{grid-template-columns:1fr;gap:44px}
+  .gallery{position:static}
+  h1{font-size:40px;letter-spacing:-1.3px}
+  h2{font-size:32px;letter-spacing:-.9px}
+  .benefits,.sound-grid,.steps,.cases,.guar{grid-template-columns:repeat(2,1fr)}
+  .rev-grid{grid-template-columns:1fr}
+  .two,.safety{grid-template-columns:1fr;gap:36px}
+  .rev-top{grid-template-columns:1fr;gap:26px;padding:28px}
+  .photo img{aspect-ratio:16/10}
+  .final h2{font-size:34px;letter-spacing:-1px}
+}
+@media (max-width:720px){
+  :root{--gutter:18px;--sec:64px}
+  .nav-links{display:none}
+  .banner{font-size:11.5px}
+  h1{font-size:33px;letter-spacing:-1px}
+  h2{font-size:27px;letter-spacing:-.7px}
+  .vp{font-size:17px}
+  .benefits,.sound-grid,.steps,.cases,.guar{grid-template-columns:1fr}
+  .thumbs{grid-template-columns:repeat(4,1fr)}
+  .assure{grid-template-columns:1fr}
+  .sticky{display:flex}
+  body{padding-bottom:76px}
+  .toast{bottom:92px}
+  .table{font-size:14px}
+  .table th,.table td{padding:13px 12px}
+  .table tbody th{width:38%}
+  .pdp{padding-block:24px var(--sec)}
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1595185192248418');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1595185192248418&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="banner">Free shipping &amp; free returns across Australia · 100 nights to try it</div>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><img src="assets/mark.png" alt="Auraluxe"><span>Auraluxe</span></a>
+    <div class="nav-links">
+      <a href="#sound">Sounds</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="#specs">Specs</a>
+      <a href="sleep-science.html">Science</a>
+    </div>
+    <button class="btn" data-cta>Add to cart — $99.95</button>
+  </div>
+</nav>
+
+<main class="wrap pdp">
+  <div class="gallery">
+    <div class="stage" id="stage">
+      <div class="halo"></div>
+      <img id="stageImg" class="contain" src="assets/glow-lamp-product-cutout.png" alt="The Auraluxe Glow, a rounded bedside sound machine and night light lit warm amber">
+      <div class="slot"><span id="slotText"></span></div>
+      <span class="stage-tag" id="stageTag">Warm amber, lowest brightness</span>
+    </div>
+    <div class="thumbs" id="thumbs" role="group" aria-label="Product images"></div>
+  </div>
+
+  <div>
+    <div class="eyebrow">Sound machine &amp; night light</div>
+    <h1>The Auraluxe Glow</h1>
+    <p class="vp">Better sleep for the whole family — from one small light on the nightstand.</p>
+
+    <div class="ratingline">
+      <span class="stars" id="hStars" aria-label="Rated 4.8 out of 5"></span>
+      <span>4.8 · <a href="#reviews">214 reviews</a></span>
+    </div>
+
+    <ul class="bullets">
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12a5 5 0 0 1 5-5 8 8 0 0 1 5 2 8 8 0 0 1 5-2 5 5 0 0 1 0 10 8 8 0 0 1-5-2 8 8 0 0 1-5 2 5 5 0 0 1-5-5"/></svg><span><b>Sound.</b> 34 sounds, none of them looped.</span></li>
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V18h8v-3.3A7 7 0 0 0 12 2"/></svg><span><b>Light.</b> Hundreds of colours, dim enough for night feeds.</span></li>
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 3 5"/><path d="m19 3 2 2"/></svg><span><b>Wake-up.</b> Colour programs that tell a toddler it's morning.</span></li>
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2"/><path d="M22 11v2"/><path d="M6 11v2"/></svg><span><b>10 hours cordless,</b> and it plays while charging.</span></li>
+    </ul>
+
+    <div class="pricebox">
+      <div class="pricerow"><span class="price">$99.95</span><span style="font-size:14px;color:var(--steel)">AUD, GST included</span></div>
+      <div class="instal">Or 4 interest-free payments of $24.99 with Afterpay</div>
+      <div class="cta-wrap"><button class="btn btn-lg" data-cta>Add to cart — $99.95</button></div>
+      <div class="micro"><span><span class="dot-live"></span>In stock</span><span>Free delivery in <b>2–7 days</b></span></div>
+
+      <div class="assure">
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg><span>100 nights to try it</span></div>
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg><span>Free returns, we pay the postage</span></div>
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><span>2-year warranty</span></div>
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>Australian support</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ---------- SOCIAL PROOF, HIGH ---------- -->
+<section class="wrap reveal" id="reviews" style="padding-bottom:var(--sec)">
+  <div class="proof">
+    <div>
+      <div class="score">4.8</div>
+      <div class="stars" id="sStars" style="margin-top:9px" aria-label="Average 4.8 out of 5"></div>
+      <div class="rev-meta">214 reviews · 82% five-star</div>
+      <a class="btn btn-ghost" href="reviews.html" style="margin-top:16px">Read all</a>
+    </div>
+    <div class="quotes" id="quotes"></div>
+  </div>
+  <p class="note">Quotes are from the <a href="reviews.html">reviews page</a>. Connect your live review feed, and add customer photos, before launch.</p>
+</section>
+
+<!-- ---------- THREE BENEFITS, SHOWN ---------- -->
+<section class="band">
+  <div class="wrap sec reveal">
+    <div class="eyebrow">Sound · light · wake-up</div>
+    <h2>Three jobs, all night</h2>
+    <div class="steps">
+      <article class="step">
+        <div class="step-img"><img src="assets/bento-sleeping.jpg" alt="A person asleep in a dim, quiet room"></div>
+        <div class="n">SOUND</div>
+        <h3>The door closing stops waking anyone</h3>
+        <p>Steady sound fills the room so the hallway and the street don't cut through it. Nothing loops, so there's no restart to notice.</p>
+      </article>
+      <article class="step">
+        <div class="step-img"><img src="assets/mosaic-bedroom-night.jpg" alt="A bedroom lit in warm amber by the Glow"></div>
+        <div class="n">LIGHT</div>
+        <h3>Night feeds without the overhead light</h3>
+        <p>Pick a colour, turn the brightness down. Enough to see a bottle; gentle enough that everyone goes back to sleep.</p>
+      </article>
+      <article class="step">
+        <div class="step-img"><img src="assets/bedroom-nursery.jpg" alt="A nursery with the Glow placed across the room"></div>
+        <div class="n">WAKE-UP</div>
+        <h3>Mornings you don't negotiate</h3>
+        <p>One colour means stay in bed, another means it's okay to get up. Toddlers learn it fast.</p>
+      </article>
+    </div>
+    <div class="rowline">
+      <div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg><span><b>No phone needed</b>Every function has a button on the front.</span></div>
+      <div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect width="18" height="11" x="3" y="9" rx="2"/></svg><span><b>Child lock</b>Little fingers can't change the volume.</span></div>
+      <div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-3 7h4l-3 7"/><path d="M4 14h4"/><path d="M16 14h4"/></svg><span><b>Blackout-proof</b>Switches to battery without restarting.</span></div>
+      <div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg><span><b>App or voice</b>Schedules in the app; Alexa and Google Home.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- SOUND ---------- -->
+<section class="wrap sec reveal" id="sound">
+  <div class="eyebrow">34 sounds</div>
+  <h2>Hear the three big ones</h2>
+  <p class="sub">Generated live in your browser, so you can compare the shapes before you buy. Keep the volume low.</p>
+  <div class="sound-grid" id="sounds" style="grid-template-columns:repeat(3,1fr)">
+    <button class="sound" data-noise="white" aria-pressed="false"><span><strong>White noise</strong><em>Even across every frequency. Covers sharp sounds.</em></span><span class="play" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button>
+    <button class="sound" data-noise="pink" aria-pressed="false"><span><strong>Pink noise</strong><em>Softer, weighted low. Good over traffic.</em></span><span class="play" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button>
+    <button class="sound" data-noise="brown" aria-pressed="false"><span><strong>Brown noise</strong><em>Deeper again. The nursery favourite.</em></span><span class="play" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button>
+  </div>
+  <p class="note">Plus 31 more: rain, thunderstorm, wind, ocean, stream, birds, crickets, frogs, fireplace, fans, café, clock, wind chimes, train, womb and heartbeat, shushing and lullabies. Previews above are browser-generated, not recordings of the speaker.</p>
+</section>
+
+<!-- ---------- SPECS + BOX ---------- -->
+<section class="band">
+  <div class="wrap sec reveal" id="specs">
+    <div class="eyebrow">The details</div>
+    <h2>What you get</h2>
+    <div class="two">
+      <div>
+        <h3 style="font-size:19px;margin-bottom:14px">In the box</h3>
+        <ul class="mini">
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>The Auraluxe Glow</span></li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>USB-C charging cable, 1.5 m</span></li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>App guide, manual and warranty booklet</span></li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>USB-C wall plug</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:19px;margin-bottom:14px">Specifications</h3>
+        <dl class="spec"><dt>Size</dt><dd>105 mm wide · 112 mm tall</dd></dl>
+        <dl class="spec"><dt>Weight</dt><dd>About 420 g</dd></dl>
+        <dl class="spec"><dt>Sounds</dt><dd>34, non-looping</dd></dl>
+        <dl class="spec"><dt>Light</dt><dd>Hundreds of colours, adjustable brightness</dd></dl>
+        <dl class="spec"><dt>Controls</dt><dd>Touch panel, plus the app over Wi-Fi</dd></dl>
+        <dl class="spec"><dt>Timer</dt><dd>30 / 60 / 90 min, or continuous</dd></dl>
+        <dl class="spec"><dt>Battery</dt><dd>2000 mAh · up to 10 hours · plays while charging</dd></dl>
+        <dl class="spec"><dt>Charging</dt><dd>USB-C, 5 V / 1 A · about 3 hours full</dd></dl>
+        <dl class="spec"><dt>Speaker</dt><dd>3 W full-range</dd></dl>
+        <dl class="spec"><dt>App features</dt><dd>Schedules, okay-to-wake, child lock, memory</dd></dl>
+        <dl class="spec"><dt>Voice &amp; pairing</dt><dd>Alexa, Google Home · 5 machines per phone</dd></dl>
+        <dl class="spec"><dt>Warranty</dt><dd>2 years</dd></dl>
+        <p class="note">Size, weight, battery, charge time and output are estimated from the Sleep Assist Pro hardware and need confirming against the production unit. [STILL NEEDED: measured dB per volume step, certification marks, country of manufacture, warranty exclusions.]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- SAFETY ---------- -->
+<section class="wrap sec reveal">
+  <div class="safety">
+    <div>
+      <div class="eyebrow">Safety</div>
+      <h2>How loud, and where to put it</h2>
+      <p class="sub">Research on infant sound machines found every device tested went above the level recommended for hospital nurseries at maximum volume, 30 cm away. Placement matters more than anything on the box.</p>
+      <ul class="mini">
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Across the room, never in the cot.</b></span></li>
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Around 50 dB or below</b> for all-night use near a baby — about a quiet fridge. If you can talk over it, it's loud enough.</span></li>
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Turn on the child lock</b> so the volume can't be changed.</span></li>
+      </ul>
+      <p class="note">Sources on the <a href="sleep-science.html">evidence page</a>. [A dB claim needs measured output at 30 cm and 1 m.]</p>
+    </div>
+    <div class="photo"><img src="assets/bedroom-bassinet.jpg" alt="A bassinet in a softly lit nursery"></div>
+  </div>
+</section>
+
+<!-- ---------- FAQ ---------- -->
+<section class="band">
+  <div class="wrap sec reveal">
+    <div class="eyebrow">Before you decide</div>
+    <h2>Questions, answered plainly</h2>
+    <div class="faq">
+      <details open><summary>White, pink or brown noise — what's the difference?</summary><p>All three are steady, broadband sound; they differ in where the energy sits. White is even across the range and covers sharp sounds best. Pink leans lower and sounds softer, which suits traffic. Brown is lower again, closest to a distant waterfall. You can hear all three above.</p></details>
+      <details><summary>Can it run all night? Can sound and light work separately?</summary><p>Yes to both. Leave it running continuously or set a 30, 60 or 90-minute timer, and use sound on its own, light on its own, or together.</p></details>
+      <details><summary>Do I need the app?</summary><p>No — every function is on the touch panel. The app adds schedules, okay-to-wake programs, child lock and control from another room, and needs Wi-Fi to reach the machine. Share one machine between phones, or run up to five machines from one phone. Works with Alexa and Google Home.</p></details>
+      <details><summary>Battery life, and charging?</summary><p>Up to 10 hours on a charge over USB-C, and it keeps playing while plugged in. If the power goes out it switches to battery on its own.</p></details>
+      <details><summary>How loud should I set it for a baby?</summary><p>Around 50 dB or below for all-night use, placed across the room rather than near the cot. More in the safety section above.</p></details>
+      <details><summary>Shipping and delivery?</summary><p>Free across Australia, arriving in about 2 to 7 days depending on where you are.</p></details>
+      <details><summary>What if we don't like it?</summary><p>Try it for 100 nights. If it isn't working for your family, get in touch and send it back — returns are free within Australia and we refund the purchase. [VERIFY: original packaging requirement and refund processing time.]</p></details>
+      <details><summary>What does the warranty cover?</summary><p>Two years on the light, speaker and battery, alongside your rights under Australian Consumer Law. [VERIFY: exclusions and claim process.]</p></details>
+      <details><summary>Why not just use a phone app?</summary><p>Three reasons: app clips usually loop, a screen is the worst light in a dark bedroom, and the phone has to stay in the room all night. The Glow keeps the phone out of it.</p></details>
+      <details><summary>Will it help us sleep?</summary><p>Honestly, it depends on your house — covering noise helps most when there's noise to cover. We publish the research, including the weak parts, on the <a href="sleep-science.html">evidence page</a>, and the 100 nights are there so you can find out for nothing.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- FINAL CTA ---------- -->
+<section class="final">
+  <div class="halo2"></div>
+  <div class="wrap" style="position:relative">
+    <h2>Start with tonight</h2>
+    <p>Rated 4.8 by owners. Yours for 100 nights, and free to send back.</p>
+    <div class="cta"><button class="btn btn-lg" data-cta>Add to cart — $99.95</button></div>
+    <div class="fmicro">Free shipping &amp; returns · 2-year warranty · Afterpay available</div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="foot">
+    <span>© 2026 Auraluxe. Made for quieter nights.</span>
+    <div class="foot-links"><a href="index.html">Home</a><a href="how-it-works.html">How it works</a><a href="reviews.html">Reviews</a><a href="sleep-science.html">Evidence</a><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<div class="sticky" id="stickyBar">
+  <div><div class="s-price">$99.95</div><div class="s-sub">4.8 ★ · 100 nights, free returns</div></div>
+  <button class="btn" data-cta>Add to cart</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/shared.js"></script>
+<script>
+const STAR = c => `<svg width="15" height="15" viewBox="0 0 24 24" fill="${c}" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 17.44 6.2 20.5l1.1-6.45-4.7-4.6 6.5-.95z"/></svg>`;
+const starRow = n => Array.from({length:5},(_,i)=>STAR(i<n?"var(--brand-yellow)":"var(--hairline-strong)")).join("");
+document.getElementById("hStars").innerHTML = starRow(5);
+document.getElementById("sStars").innerHTML = starRow(5);
+
+/* gallery */
+const SHOTS = [
+  { src:"assets/glow-lamp-product-cutout.png", fit:"contain", tag:"Warm amber, lowest brightness", alt:"The Auraluxe Glow lit warm amber" },
+  { src:"assets/glow-lamp-lifestyle.png", fit:"cover", tag:"On a bedside table at night", alt:"The Glow on a bedside table in a dark bedroom" },
+  { src:"assets/glow-lamp-orange.png", fit:"contain", tag:"Touch panel on the front", alt:"Close-up of the Glow's touch panel" },
+  { src:"assets/glow-lamp-cutout.png", fit:"contain", tag:"With the app", alt:"The Glow beside the Auraluxe app" },
+  { src:"assets/bedroom-nursery.jpg", fit:"cover", tag:"In a nursery, across the room", alt:"A nursery with the Glow placed across the room" },
+  { slot:"[INSERT PHOTO] Size reference — the Glow in a hand or beside a mug — plus a short video of the light changing colour.", tag:"Size reference" },
+];
+const stage = document.getElementById("stage"), stageImg = document.getElementById("stageImg"),
+      stageTag = document.getElementById("stageTag"), slotText = document.getElementById("slotText"),
+      thumbs = document.getElementById("thumbs");
+thumbs.innerHTML = SHOTS.map((s,i)=>`<button class="thumb" data-i="${i}" aria-pressed="${i===0}" aria-label="${s.slot?"Missing image slot":"View image "+(i+1)}">${s.slot?'<b>+ add<br>photo</b>':`<img src="${s.src}" alt="">`}</button>`).join("");
+function showShot(i){
+  const s = SHOTS[i];
+  stage.classList.toggle("is-slot", !!s.slot);
+  if (s.slot) slotText.textContent = s.slot;
+  else { stageImg.src = s.src; stageImg.alt = s.alt; stageImg.className = s.fit === "contain" ? "contain" : ""; }
+  stageTag.textContent = s.tag;
+  thumbs.querySelectorAll(".thumb").forEach(t => t.setAttribute("aria-pressed", String(+t.dataset.i === i)));
+}
+thumbs.addEventListener("click", e => { const b = e.target.closest(".thumb"); if (b) showShot(+b.dataset.i); });
+
+/* quotes — PLACEHOLDER, replace with review feed */
+const QUOTES = [
+  ["“A steady sound floor means the hallway door and the street outside just fold into the background now. First month in years without a 2am conversation.”", "Tom H., verified buyer"],
+  ["“We run it in the nursery on brown noise. It's the only thing we bought that actually made nights quieter — for her and for us.”", "Jessica S., verified buyer"],
+  ["“The white noise is beautifully even — no looping or hiss. It did take me a few nights to find the right volume so my partner wasn't kept up.”", "Daniel K., verified buyer"],
+];
+document.getElementById("quotes").innerHTML = QUOTES.map(([q,w]) => `<blockquote>${q}<cite>${w}</cite></blockquote>`).join("");
+
+/* sound previews */
+let ac, node, gain, playing = null;
+function makeNoise(kind){
+  const len = ac.sampleRate * 3, buf = ac.createBuffer(1, len, ac.sampleRate), d = buf.getChannelData(0);
+  let b0=0,b1=0,b2=0,last=0;
+  for (let i=0;i<len;i++){
+    const w = Math.random()*2-1;
+    if (kind==="white") d[i]=w;
+    else if (kind==="brown"){ last=(last+0.02*w)/1.02; d[i]=last*3.5; }
+    else { b0=0.997*b0+w*0.0555; b1=0.963*b1+w*0.0750; b2=0.574*b2+w*0.1538; d[i]=(b0+b1+b2+w*0.1848)*0.5; }
+  }
+  const src = ac.createBufferSource(); src.buffer = buf; src.loop = true; return src;
+}
+function stopNoise(){
+  if (node){ try{ gain.gain.setTargetAtTime(0,ac.currentTime,.12); const n=node; setTimeout(()=>n.stop(),400);}catch(e){} node=null; }
+  document.querySelectorAll(".sound[data-noise]").forEach(b=>{ b.setAttribute("aria-pressed","false"); b.querySelector(".play").innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`; });
+  playing = null;
+}
+document.getElementById("sounds").addEventListener("click", e => {
+  const btn = e.target.closest(".sound[data-noise]"); if (!btn) return;
+  const kind = btn.dataset.noise;
+  if (playing === kind) { stopNoise(); return; }
+  stopNoise();
+  ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === "suspended") ac.resume();
+  gain = ac.createGain(); gain.gain.value = 0; gain.connect(ac.destination);
+  node = makeNoise(kind); node.connect(gain); node.start();
+  gain.gain.setTargetAtTime(0.055, ac.currentTime, .25);
+  playing = kind;
+  btn.setAttribute("aria-pressed","true");
+  btn.querySelector(".play").innerHTML = `<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`;
+  clearTimeout(window.__snd); window.__snd = setTimeout(stopNoise, 25000);
+});
+
+/* cart */
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(window.__tt); window.__tt=setTimeout(()=>t.classList.remove("show"),2200); }
+document.querySelectorAll("[data-cta]").forEach(b => b.addEventListener("click", () => { stopNoise(); toast("Taking you to checkout…"); if (window.buyNow) buyNow(1); }));
+
+/* sticky bar + reveals */
+const bar = document.getElementById("stickyBar"), anchor = document.querySelector(".pricebox");
+new IntersectionObserver(es => es.forEach(e => bar.classList.toggle("show", !e.isIntersecting && e.boundingClientRect.top < 0)), {threshold:0}).observe(anchor);
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.08});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0d1f3c"/><circle cx="50" cy="54" r="19" fill="#e0a24f"/><rect x="33" y="66" width="34" height="10" rx="5" fill="#f6f5f4"/></svg></template>
+</body>
+</html>

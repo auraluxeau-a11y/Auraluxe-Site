@@ -176,6 +176,11 @@ function Testimonials() {
                 <Icon name="ChevronRight" size={18} color="var(--ink)" />
               </button>
             </div>
+            <div style={{ textAlign: "center", marginTop: 24 }}>
+              <a href="reviews.html" className="link-accent" style={{ display: "inline-flex", alignItems: "center", gap: 7, fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 500, color: "var(--accent-deep, var(--primary-deep))", textDecoration: "none" }}>
+                Read all 214 reviews <Icon name="ArrowRight" size={16} />
+              </a>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -213,7 +218,7 @@ function RiskReversal() {
 /* ---------- 8 · FAQ ACCORDION ---------- */
 function Faq() {
   const items = [
-    { q: "Does this actually work?", a: "A steady wall of sound lowers the bar a noise has to clear to wake you, and a warm sunrise glow eases you out of sleep instead of jolting you awake. It's a physical response, not a gimmick - and 2,400+ customers rate it 4.8/5." },
+    { q: "Does this actually work?", a: "A steady wall of sound lowers the bar a noise has to clear to wake you, and a warm sunrise glow eases you out of sleep instead of jolting you awake. It's a physical response, not a gimmick - and 200+ customers rate it 4.8/5." },
     { q: "Can I leave it on all night?", a: "Yes. Auraluxe is designed to run for a full 8+ hours - either on up to 10 hours of battery, or plugged in indefinitely. It's built to be left on until morning." },
     { q: "What if I share a bed?", a: "The sound and light fill the whole room rather than one ear, so it works for both of you. Most partners say the low, steady hum is easier to sleep through than silence." },
     { q: "Can I return it?", a: "Try Auraluxe for 100 nights. If your sleep isn't calmer, send it back - we cover return shipping. It also comes with a 2-year warranty." },
@@ -285,7 +290,7 @@ function Footer({ onSubscribe }) {
   const [email, setEmail] = React.useState("");
   const cols = [
     { h: "Product", links: ["The Glow", "Sound library", "The app", "Gift cards"] },
-    { h: "Learn", links: ["How it works", "The science", "Sleep journal", "Reviews"] },
+    { h: "Learn", links: [["How it works", "how-it-works.html"], ["The science", "sleep-science.html"], ["Sleep journal", "#"], ["Reviews", "reviews.html"]] },
     { h: "Support", links: ["Help center", "Shipping & returns", "100-night trial", "Warranty"] },
     { h: "Company", links: ["Our story", "Sustainability", "Contact"] },
   ];
@@ -337,10 +342,13 @@ function Footer({ onSubscribe }) {
             <div key={c.h}>
               <div style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: "var(--ink)", marginBottom: 14 }}>{c.h}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
-                {c.links.map((l) => (
-                  <a key={l} href="#" onClick={(e) => e.preventDefault()} className="footer-link"
+                {c.links.map((x) => {
+                  const [l, href] = Array.isArray(x) ? x : [x, "#"];
+                  return (
+                  <a key={l} href={href} onClick={href === "#" ? (e) => e.preventDefault() : undefined} className="footer-link"
                     style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--steel)", textDecoration: "none", transition: "color .16s ease" }}>{l}</a>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}

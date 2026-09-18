@@ -59,10 +59,12 @@ function HowNav({
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "ArrowLeft",
     size: 16
-  }), " Back to Auraluxe"), /*#__PURE__*/React.createElement(Button, {
+  }), " Back to Auraluxe"), /*#__PURE__*/React.createElement("div", {
+    className: "nav-cta-wrap"
+  }, /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
     onClick: onCta
-  }, "Start Sleeping Better - $99.95")));
+  }, "Start Sleeping Better - $99.95"))));
 }
 function HowHero() {
   return /*#__PURE__*/React.createElement("section", {
@@ -135,7 +137,8 @@ function StepMarker({
       flexDirection: "column",
       alignItems: "center",
       width: 56
-    }
+    },
+    className: "how-step-marker"
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       width: 44,
@@ -350,6 +353,7 @@ function EveningTimeline() {
     icon: "Sunrise"
   }];
   return /*#__PURE__*/React.createElement("div", {
+    className: "evening-timeline",
     style: {
       position: "relative",
       marginTop: 56
@@ -631,6 +635,7 @@ function Chip({
 }
 function Step3() {
   return /*#__PURE__*/React.createElement("div", {
+    className: "how-step3",
     style: {
       position: "relative",
       borderRadius: "var(--r-xxxl)",
@@ -788,6 +793,7 @@ function Journey() {
     }
   }, steps.map((S, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
+    className: "how-journey-row",
     style: {
       display: "flex",
       gap: 32,

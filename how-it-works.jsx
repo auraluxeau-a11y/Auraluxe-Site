@@ -18,7 +18,7 @@ function HowNav({ onCta }) {
         <a href="index.html" className="nav-link" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "var(--font-body)", fontSize: 14.5, fontWeight: 500, color: "var(--charcoal)", textDecoration: "none" }}>
           <Icon name="ArrowLeft" size={16} /> Back to Auraluxe
         </a>
-        <Button variant="primary" onClick={onCta}>Start Sleeping Better - $99.95</Button>
+        <div className="nav-cta-wrap"><Button variant="primary" onClick={onCta}>Start Sleeping Better - $99.95</Button></div>
       </div>
     </nav>
   );
@@ -40,7 +40,7 @@ function HowHero() {
 /* ---------- shared step marker + connecting line ---------- */
 function StepMarker({ n, last }) {
   return (
-    <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", width: 56 }}>
+    <div className="how-step-marker" style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", width: 56 }}>
       <div style={{ width: 44, height: 44, borderRadius: "50%", background: "var(--canvas)", border: "1.5px solid var(--accent-deep, var(--primary-deep))", color: "var(--accent-deep, var(--primary-deep))", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-head)", fontWeight: 600, fontSize: 17, flexShrink: 0, zIndex: 2, boxShadow: "var(--elev-1)" }}>{n}</div>
       {!last && (
         <div style={{ position: "relative", flex: 1, width: 2, marginTop: 4, background: "var(--hairline)", minHeight: 260 }}>
@@ -130,7 +130,7 @@ function EveningTimeline() {
     { t: "6:30 AM", label: "Sunrise wakes you", icon: "Sunrise" },
   ];
   return (
-    <div style={{ position: "relative", marginTop: 56 }}>
+    <div className="evening-timeline" style={{ position: "relative", marginTop: 56 }}>
       <div style={{ position: "absolute", left: 0, right: 0, top: 19, height: 2, borderRadius: 2, background: "linear-gradient(90deg, var(--brand-navy) 0%, var(--brand-purple) 45%, var(--brand-orange) 78%, var(--brand-yellow) 100%)" }} />
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${pts.length}, 1fr)`, position: "relative" }}>
         {pts.map((p, i) => (
@@ -221,7 +221,7 @@ function Chip({ icon, children, style }) {
 
 function Step3() {
   return (
-    <div style={{ position: "relative", borderRadius: "var(--r-xxxl)", overflow: "hidden", background: "linear-gradient(180deg, var(--brand-navy-deep) 0%, var(--brand-navy) 60%, var(--brand-navy-mid) 100%)", padding: "72px var(--gutter,40px)" }}>
+    <div className="how-step3" style={{ position: "relative", borderRadius: "var(--r-xxxl)", overflow: "hidden", background: "linear-gradient(180deg, var(--brand-navy-deep) 0%, var(--brand-navy) 60%, var(--brand-navy-mid) 100%)", padding: "72px var(--gutter,40px)" }}>
       <div className="aura-drift" style={{ position: "absolute", top: "10%", left: "12%", width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(119,147,199,0.30) 0%, transparent 68%)", filter: "blur(16px)", pointerEvents: "none" }} />
       <div className="aura-drift2" style={{ position: "absolute", bottom: "-10%", right: "8%", width: 380, height: 380, borderRadius: "50%", background: "radial-gradient(circle, rgba(240,192,96,0.22) 0%, transparent 66%)", filter: "blur(16px)", pointerEvents: "none" }} />
 
@@ -269,7 +269,7 @@ function Journey() {
   return (
     <section id="journey" style={{ maxWidth: HMAXW, margin: "0 auto", padding: "var(--sec,104px) var(--gutter,40px)" }}>
       {steps.map((S, i) => (
-        <div key={i} style={{ display: "flex", gap: 32, marginBottom: i < steps.length - 1 ? 8 : 0 }}>
+        <div key={i} className="how-journey-row" style={{ display: "flex", gap: 32, marginBottom: i < steps.length - 1 ? 8 : 0 }}>
           <StepMarker n={i + 1} last={i === steps.length - 1} />
           <div style={{ flex: 1, paddingBottom: i < steps.length - 1 ? 88 : 0 }}>
             <S />

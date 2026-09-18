@@ -80,6 +80,9 @@ function TopNav({
   onCta
 }) {
   const links = [{
+    label: "The Glow",
+    href: "glow.html"
+  }, {
     label: "How it works",
     href: "#how"
   }, {
@@ -87,10 +90,10 @@ function TopNav({
     href: "#features"
   }, {
     label: "The science",
-    href: "#science"
+    href: "sleep-science.html"
   }, {
     label: "Reviews",
-    href: "#reviews"
+    href: "reviews.html"
   }];
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -103,6 +106,10 @@ function TopNav({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   const go = (e, href) => {
+    if (!href.startsWith("#")) {
+      setOpen(false);
+      return;
+    }
     e.preventDefault();
     setOpen(false);
     const t = document.querySelector(href);
@@ -145,7 +152,7 @@ function TopNav({
     style: {
       display: "flex",
       alignItems: "center",
-      gap: 32
+      gap: 24
     }
   }, links.map(l => /*#__PURE__*/React.createElement("a", {
     key: l.label,
@@ -158,6 +165,7 @@ function TopNav({
       fontWeight: 500,
       color: "var(--charcoal)",
       textDecoration: "none",
+      whiteSpace: "nowrap",
       transition: "color .18s ease"
     }
   }, l.label))), /*#__PURE__*/React.createElement("div", {
@@ -166,10 +174,12 @@ function TopNav({
       alignItems: "center",
       gap: 12
     }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nav-cta-wrap"
   }, /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
     onClick: onCta
-  }, "Start Sleeping Better - $99.95"), /*#__PURE__*/React.createElement("button", {
+  }, "Start Sleeping Better - $99.95")), /*#__PURE__*/React.createElement("button", {
     "aria-label": "Menu",
     className: "nav-burger",
     onClick: () => setOpen(o => !o),
@@ -206,7 +216,18 @@ function TopNav({
       padding: "13px 0",
       borderBottom: "1px solid var(--hairline-soft)"
     }
-  }, l.label))));
+  }, l.label)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      paddingTop: 16
+    }
+  }, /*#__PURE__*/React.createElement(Button, {
+    variant: "primary",
+    size: "lg",
+    onClick: onCta,
+    style: {
+      width: "100%"
+    }
+  }, "Start Sleeping Better - $99.95"))));
 }
 
 /* ---------- 1 · HERO ---------- */
@@ -359,7 +380,7 @@ function Hero({
       color: "var(--steel)",
       fontFeatureSettings: '"tnum"'
     }
-  }, "4.8 \xB7 2,400+ people sleeping deeper"), /*#__PURE__*/React.createElement("span", {
+  }, "4.8 \xB7 200+ people sleeping deeper"), /*#__PURE__*/React.createElement("span", {
     className: "hero-proof-cue",
     style: {
       display: "inline-flex",
@@ -444,7 +465,7 @@ function HeroTrust() {
       fontWeight: 500,
       color: "var(--ink)"
     }
-  }, "Rated 4.8/5 by 2,400+ customers")), /*#__PURE__*/React.createElement("span", {
+  }, "Rated 4.8/5 by 200+ customers")), /*#__PURE__*/React.createElement("span", {
     style: {
       width: 1,
       height: 22,

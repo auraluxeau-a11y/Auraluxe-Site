@@ -28,10 +28,11 @@ function SaleBanner() {
 /* ---------- Sticky transparent nav ---------- */
 function TopNav({ onCta }) {
   const links = [
+    { label: "The Glow", href: "glow.html" },
     { label: "How it works", href: "#how" },
     { label: "Features", href: "#features" },
-    { label: "The science", href: "#science" },
-    { label: "Reviews", href: "#reviews" },
+    { label: "The science", href: "sleep-science.html" },
+    { label: "Reviews", href: "reviews.html" },
   ];
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -41,7 +42,7 @@ function TopNav({ onCta }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  const go = (e, href) => { e.preventDefault(); setOpen(false); const t = document.querySelector(href); if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" }); };
+  const go = (e, href) => { if (!href.startsWith("#")) { setOpen(false); return; } e.preventDefault(); setOpen(false); const t = document.querySelector(href); if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" }); };
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 50,
@@ -52,14 +53,14 @@ function TopNav({ onCta }) {
     }}>
       <div style={{ maxWidth: MAXW, margin: "0 auto", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 var(--gutter, 40px)" }}>
         <a href="#top" onClick={(e) => go(e, "#top")} style={{ textDecoration: "none" }}><Logo height={27} /></a>
-        <div className="nav-links" style={{ display: "flex", alignItems: "center", gap: 32 }}>
+        <div className="nav-links" style={{ display: "flex", alignItems: "center", gap: 24 }}>
           {links.map((l) => (
             <a key={l.label} href={l.href} onClick={(e) => go(e, l.href)} className="nav-link"
-              style={{ fontFamily: "var(--font-body)", fontSize: 14.5, fontWeight: 500, color: "var(--charcoal)", textDecoration: "none", transition: "color .18s ease" }}>{l.label}</a>
+              style={{ fontFamily: "var(--font-body)", fontSize: 14.5, fontWeight: 500, color: "var(--charcoal)", textDecoration: "none", whiteSpace: "nowrap", transition: "color .18s ease" }}>{l.label}</a>
           ))}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <Button variant="primary" onClick={onCta}>Start Sleeping Better - $99.95</Button>
+          <div className="nav-cta-wrap"><Button variant="primary" onClick={onCta}>Start Sleeping Better - $99.95</Button></div>
           <button aria-label="Menu" className="nav-burger" onClick={() => setOpen((o) => !o)}
             style={{ display: "none", background: "none", border: "none", cursor: "pointer", padding: 6, color: "var(--ink)" }}>
             <Icon name={open ? "X" : "Menu"} size={24} />
@@ -72,6 +73,7 @@ function TopNav({ onCta }) {
             <a key={l.label} href={l.href} onClick={(e) => go(e, l.href)}
               style={{ fontFamily: "var(--font-body)", fontSize: 16, fontWeight: 500, color: "var(--charcoal)", textDecoration: "none", padding: "13px 0", borderBottom: "1px solid var(--hairline-soft)" }}>{l.label}</a>
           ))}
+          <div style={{ paddingTop: 16 }}><Button variant="primary" size="lg" onClick={onCta} style={{ width: "100%" }}>Start Sleeping Better - $99.95</Button></div>
         </div>
       )}
     </nav>
@@ -115,7 +117,7 @@ function Hero({ onCta }) {
               onClick={(e) => { e.preventDefault(); const t = document.querySelector('#reviews'); if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); }}
               style={{ display: "inline-flex", alignItems: "center", gap: 13, marginTop: 22, textDecoration: "none", cursor: "pointer" }}>
               <Stars size={16} />
-              <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--steel)", fontFeatureSettings: '"tnum"' }}>4.8 · 2,400+ people sleeping deeper</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--steel)", fontFeatureSettings: '"tnum"' }}>4.8 · 200+ people sleeping deeper</span>
               <span className="hero-proof-cue" style={{ display: "inline-flex", alignItems: "center", gap: 3, fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 500, color: "var(--accent-deep, var(--primary-deep))" }}>
                 Read reviews <Icon name="ChevronDown" size={15} />
               </span>
@@ -141,7 +143,7 @@ function HeroTrust() {
         <div style={{ maxWidth: MAXW, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: 28, flexWrap: "wrap", textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 11 }}>
             <Stars size={16} />
-            <span style={{ fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 500, color: "var(--ink)" }}>Rated 4.8/5 by 2,400+ customers</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 500, color: "var(--ink)" }}>Rated 4.8/5 by 200+ customers</span>
           </div>
           <span style={{ width: 1, height: 22, background: "var(--hairline-strong)" }} className="hero-trust-divider" />
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>

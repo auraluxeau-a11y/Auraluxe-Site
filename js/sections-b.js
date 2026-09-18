@@ -620,6 +620,27 @@ function Testimonials() {
     name: "ChevronRight",
     size: 18,
     color: "var(--ink)"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      marginTop: 24
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "reviews.html",
+    className: "link-accent",
+    style: {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 7,
+      fontFamily: "var(--font-body)",
+      fontSize: 15,
+      fontWeight: 500,
+      color: "var(--accent-deep, var(--primary-deep))",
+      textDecoration: "none"
+    }
+  }, "Read all 214 reviews", /*#__PURE__*/React.createElement(Icon, {
+    name: "ArrowRight",
+    size: 16
   })))))));
 }
 
@@ -682,7 +703,7 @@ function RiskReversal() {
 function Faq() {
   const items = [{
     q: "Does this actually work?",
-    a: "A steady wall of sound lowers the bar a noise has to clear to wake you, and a warm sunrise glow eases you out of sleep instead of jolting you awake. It's a physical response, not a gimmick - and 2,400+ customers rate it 4.8/5."
+    a: "A steady wall of sound lowers the bar a noise has to clear to wake you, and a warm sunrise glow eases you out of sleep instead of jolting you awake. It's a physical response, not a gimmick - and 200+ customers rate it 4.8/5."
   }, {
     q: "Can I leave it on all night?",
     a: "Yes. Auraluxe is designed to run for a full 8+ hours - either on up to 10 hours of battery, or plugged in indefinitely. It's built to be left on until morning."
@@ -896,7 +917,7 @@ function Footer({
     links: ["The Glow", "Sound library", "The app", "Gift cards"]
   }, {
     h: "Learn",
-    links: ["How it works", "The science", "Sleep journal", "Reviews"]
+    links: [["How it works", "how-it-works.html"], ["The science", "sleep-science.html"], ["Sleep journal", "#"], ["Reviews", "reviews.html"]]
   }, {
     h: "Support",
     links: ["Help center", "Shipping & returns", "100-night trial", "Warranty"]
@@ -1064,10 +1085,12 @@ function Footer({
       flexDirection: "column",
       gap: 11
     }
-  }, c.links.map(l => /*#__PURE__*/React.createElement("a", {
+  }, c.links.map(x => {
+    const [l, href] = Array.isArray(x) ? x : [x, "#"];
+    return /*#__PURE__*/React.createElement("a", {
     key: l,
-    href: "#",
-    onClick: e => e.preventDefault(),
+    href: href,
+    onClick: href === "#" ? e => e.preventDefault() : undefined,
     className: "footer-link",
     style: {
       fontFamily: "var(--font-body)",
@@ -1076,7 +1099,8 @@ function Footer({
       textDecoration: "none",
       transition: "color .16s ease"
     }
-  }, l)))))), /*#__PURE__*/React.createElement("div", {
+  }, l);
+  }))))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       justifyContent: "space-between",

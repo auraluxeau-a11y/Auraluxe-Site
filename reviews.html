@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviews — Auraluxe</title>
+<meta name="description" content="Read what 200+ Auraluxe sleepers say about falling asleep faster, staying asleep longer, and waking to a gentle sunrise.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0;background:var(--canvas)}
+body{-webkit-font-smoothing:antialiased;font-family:var(--font-body);color:var(--ink)}
+:root{--gutter:40px;--accent:#7793C7;--accent-deep:#4a659e}
+a{color:var(--charcoal);text-decoration:none}
+a:hover{color:var(--ink)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--gutter)}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,250,249,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--hairline)}
+.nav-inner{height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:9px}
+.brand img{height:27px;width:27px;object-fit:contain}
+.brand span{font-family:var(--font-head);font-weight:500;font-size:20px;letter-spacing:.4px;color:var(--aura-logo-blue)}
+.back{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;font-weight:500;color:var(--charcoal)}
+.btn{font-family:var(--font-body);font-size:14.5px;font-weight:500;line-height:1.3;border-radius:var(--r-md);padding:11px 20px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;background:var(--accent);color:#fff;transition:background .2s cubic-bezier(.4,0,.2,1),transform .2s cubic-bezier(.4,0,.2,1)}
+.btn:hover{background:var(--accent-deep);transform:translateY(-1px);color:#fff}
+.btn-lg{font-size:15.5px;padding:15px 28px}
+/* hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(168deg,#edf0f7 0%,#f1ecf3 44%,#faf3ec 100%);padding:76px 0 68px;text-align:center}
+.glow{position:absolute;border-radius:50%;pointer-events:none;filter:blur(14px)}
+.eyebrow{font-size:11.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--font-head);font-weight:600;font-size:56px;letter-spacing:-1.8px;margin:16px 0 0;color:var(--ink);text-wrap:balance}
+.lede{font-size:18px;font-weight:500;line-height:1.55;color:var(--charcoal);max-width:520px;margin:18px auto 0;text-wrap:pretty}
+/* summary */
+.summary{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xxxl);padding:36px 44px;margin:-38px auto 0;position:relative;max-width:900px;box-shadow:var(--elev-2)}
+.score{font-family:var(--font-head);font-weight:600;font-size:64px;letter-spacing:-2px;line-height:1;color:var(--ink)}
+.stars{display:flex;gap:2px}
+.meta{font-size:13.5px;color:var(--steel);margin-top:8px}
+.bars{display:flex;flex-direction:column;gap:9px}
+.bar-row{display:grid;grid-template-columns:34px 1fr 34px;align-items:center;gap:12px;font-size:13px;color:var(--steel)}
+.bar{height:7px;border-radius:var(--r-full);background:var(--hairline);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:var(--r-full);background:var(--accent)}
+/* filters */
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 30px}
+.chip{font-family:var(--font-body);font-size:13.5px;font-weight:500;color:var(--charcoal);background:var(--surface-soft);border:1px solid var(--hairline);border-radius:var(--r-full);padding:8px 16px;cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease}
+.chip:hover{background:var(--surface);border-color:var(--hairline-strong)}
+.chip[aria-pressed="true"]{background:var(--card-tint-lavender);border-color:var(--accent);color:var(--accent-deep)}
+.count{font-size:13.5px;color:var(--stone);margin-left:auto}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.card{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xxl);padding:26px 26px 28px;display:flex;flex-direction:column;gap:14px}
+.card-top{display:flex;align-items:center;gap:12px}
+.who{font-size:14px;font-weight:600;color:var(--ink)}
+.verified{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--brand-teal);margin-top:3px}
+.date{font-size:12.5px;color:var(--stone);white-space:nowrap;margin-left:auto;align-self:flex-start}
+.card h3{font-family:var(--font-head);font-weight:600;font-size:17px;letter-spacing:-.2px;margin:0;color:var(--ink)}
+.card p{font-size:14.5px;line-height:1.6;color:var(--slate);margin:0;text-wrap:pretty}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px}
+.tag{font-size:12px;font-weight:500;color:var(--steel);background:var(--surface-soft);border:1px solid var(--hairline);border-radius:var(--r-full);padding:4px 11px}
+/* closing */
+.closing{background:var(--surface);border-top:1px solid var(--hairline);margin-top:96px;padding:88px 0;text-align:center}
+.closing h2{font-family:var(--font-head);font-weight:600;font-size:38px;letter-spacing:-1.1px;margin:0;color:var(--ink);text-wrap:balance}
+.closing p{font-size:17px;line-height:1.55;color:var(--charcoal);max-width:460px;margin:14px auto 0}
+.foot{padding:34px 0;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--stone)}
+.foot-links{display:flex;gap:18px}
+@media (max-width:980px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .summary{grid-template-columns:1fr;gap:28px;padding:30px 32px;text-align:left}
+}
+@media (max-width:720px){
+  body{--gutter:20px}
+  .nav-cta-wrap{display:none}
+  h1{font-size:38px;letter-spacing:-1.2px}
+  .hero{padding:52px 0 60px}
+  .grid{grid-template-columns:1fr}
+  .closing{margin-top:68px;padding:64px 0}
+  .closing h2{font-size:28px;letter-spacing:-.6px}
+  .count{margin-left:0;width:100%}
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1595185192248418');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1595185192248418&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><img src="assets/mark.png" alt=""><span>Auraluxe</span></a>
+    <a class="back" href="index.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg> Back to Auraluxe</a>
+    <div class="nav-cta-wrap"><a class="btn" href="#" id="navCta">Start Sleeping Better - $99.95</a></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="glow" style="top:-30%;left:50%;width:720px;height:720px;margin-left:-360px;background:radial-gradient(circle,rgba(119,147,199,.28) 0%,transparent 64%)"></div>
+  <div class="wrap" style="position:relative;max-width:760px">
+    <div class="eyebrow">Real nights, real sleepers</div>
+    <h1>Reviews from quieter nights</h1>
+    <p class="lede">Every review below comes from a verified Auraluxe owner, written after at least a week of nights with the Glow.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="summary" aria-label="Rating summary">
+    <div>
+      <div class="score">4.8</div>
+      <div class="stars" style="margin-top:10px" aria-label="4.8 out of 5 stars"></div>
+      <div class="meta">Based on 214 verified reviews</div>
+    </div>
+    <div class="bars">
+      <div class="bar-row"><span>5 ★</span><span class="bar"><i style="width:82%"></i></span><span>82%</span></div>
+      <div class="bar-row"><span>4 ★</span><span class="bar"><i style="width:13%"></i></span><span>13%</span></div>
+      <div class="bar-row"><span>3 ★</span><span class="bar"><i style="width:3%"></i></span><span>3%</span></div>
+      <div class="bar-row"><span>2 ★</span><span class="bar"><i style="width:1%"></i></span><span>1%</span></div>
+      <div class="bar-row"><span>1 ★</span><span class="bar"><i style="width:1%"></i></span><span>1%</span></div>
+    </div>
+  </section>
+</div>
+
+<main class="wrap" style="padding-top:64px">
+  <div class="filters" role="group" aria-label="Filter reviews">
+    <button class="chip" data-filter="all" aria-pressed="true">All reviews</button>
+    <button class="chip" data-filter="sound" aria-pressed="false">Sound</button>
+    <button class="chip" data-filter="sunrise" aria-pressed="false">Sunrise alarm</button>
+    <button class="chip" data-filter="nursery" aria-pressed="false">Nursery</button>
+    <button class="chip" data-filter="shared" aria-pressed="false">Shared bed</button>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>Try it for 100 nights</h2>
+    <p>Sleep with it for a season. If your nights aren't calmer, send it back — we cover return shipping.</p>
+    <div style="margin-top:28px"><a class="btn btn-lg" href="#" id="ctaBottom">Start Sleeping Better - $99.95</a></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="foot">
+    <span>© 2026 Auraluxe. Reviews are collected from verified purchasers.</span>
+    <div class="foot-links"><a href="index.html">Home</a><a href="how-it-works.html">How it works</a><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script src="js/shared.js"></script>
+<script>
+const REVIEWS = [
+  { n:"Hannah R.", r:5, d:"2026-08-28", t:"No more 3am wake-ups", tags:["sound","shared"],
+    b:"I used to wake at 3am like clockwork. With the rain sound running low all night, I honestly can't tell you the last time it happened. The room feels held together somehow." },
+  { n:"Marcus T.", r:5, d:"2026-06-19", t:"The gentlest morning I've had", tags:["sunrise"],
+    b:"The sunrise glow is the kindest wake-up I've found. No blaring alarm — just a warm colour that builds until I'm already awake. Mornings stopped feeling like a shock." },
+  { n:"Aisha D.", r:5, d:"2026-05-07", t:"Our nursery finally feels settled", tags:["nursery"],
+    b:"Brown noise at a whisper and the amber light on its lowest step. She goes down in her own time now, and I don't hold my breath on the stairs anymore." },
+  { n:"Jessica S.", r:5, d:"2026-03-11", t:"The one piece of baby tech that worked", tags:["nursery","sound"],
+    b:"We run it in the nursery on brown noise. It's the only thing we bought that actually made nights quieter — for her and for us. The dim amber light is enough for a feed without waking anyone properly." },
+  { n:"Liam C.", r:4, d:"2026-01-22", t:"Small enough for a rental bedroom", tags:["sound","shared"],
+    b:"Our room is tiny and the nightstand is smaller. It takes up about as much space as a coffee cup and still fills the room evenly." },
+  { n:"Priya N.", r:5, d:"2025-11-30", t:"My phone stays out of the bedroom now", tags:["sound"],
+    b:"Timers, sound and light all live on the device, so I stopped taking my phone to bed. That alone changed how quickly I fall asleep." },
+  { n:"Daniel K.", r:4, d:"2025-08-22", t:"Great sound, took a week to dial in", tags:["sound","shared"],
+    b:"The white noise is beautifully even — no looping or hiss. It did take me a few nights to find the right volume so my partner wasn't kept up. Once set, we've both left it alone." },
+  { n:"Mei L.", r:5, d:"2025-06-28", t:"Naps stopped being a battle", tags:["nursery","sound"],
+    b:"Same sound, same light, every nap. He recognises it now — the room dims and he stops fighting it. Daycare has a second one for exactly that reason." },
+  { n:"Amelia W.", r:5, d:"2025-05-14", t:"Asleep before the timer ends", tags:["sound"],
+    b:"I set a 45-minute fade and I have never once heard it finish. The light dimming at the same time is what does it, I think — the room tells me it's time." },
+  { n:"Tom H.", r:5, d:"2025-02-09", t:"Quiet enough for a light sleeper", tags:["shared"],
+    b:"My wife wakes at everything. A steady sound floor means the hallway door and the street outside just fold into the background now. First month in years without a 2am conversation." },
+  { n:"Harriet J.", r:5, d:"2024-12-03", t:"Warm light we actually read by", tags:["sunrise","shared"],
+    b:"Nine o'clock, the light drops to something close to candle. We read, it dims itself, and neither of us reaches for a screen. That hour is the whole reason I'd buy it again." },
+  { n:"Sofia L.", r:5, d:"2024-10-18", t:"Looks like furniture, not a gadget", tags:["sunrise"],
+    b:"It sits on the nightstand and reads as a small lamp. Warm light in the evening, sunrise in the morning, and nothing glowing blue at me in between." },
+  { n:"Owen B.", r:4, d:"2024-06-05", t:"Battery life as promised", tags:["sound"],
+    b:"Ten hours cordless is accurate in my experience — I take it away most weekends. I'd like one more preset slot on the device itself, but that's a small thing." },
+  { n:"Rachel T.", r:5, d:"2024-03-16", t:"Night feeds without the floodlight", tags:["nursery"],
+    b:"The lowest amber setting is just enough to see by at 2am. No overhead light, no fully-awake baby afterwards. It's a small thing that saved us months." },
+  { n:"Grace M.", r:5, d:"2024-01-27", t:"The routine is the point", tags:["sunrise","sound"],
+    b:"Light at 9:30, rain at 9:45, sunrise at 6:45. I set it once in the app months ago and haven't touched it. Falling asleep stopped being something I work at." },
+  { n:"Nathan P.", r:5, d:"2023-09-15", t:"Works through a noisy street", tags:["sound"],
+    b:"We're on a main road. Pink noise sits right over the traffic frequencies — the cars are still there, they just don't reach me anymore." },
+  { n:"Isabelle M.", r:4, d:"2023-06-21", t:"Good on night shifts", tags:["sound","shared"],
+    b:"I sleep days half the month. Sound covers the neighbourhood and the light stays off until my own evening starts. It took me a while to trust it, but my sleep log is steadier." },
+  { n:"Elena V.", r:5, d:"2023-04-02", t:"Second one for the spare room", tags:["nursery"],
+    b:"Bought one for my son's room after ours worked so well. He asks for the rain now — it's become part of how he winds down." },
+  { n:"Charlotte F.", r:3, d:"2022-10-21", t:"Lovely device, wanted a louder max", tags:["sound"],
+    b:"The sound quality is genuinely soft and full, and the light is beautiful. I sleep with earplugs so I wanted a higher ceiling on volume than it has. Support were patient and helpful about it." },
+  { n:"Joseph N.", r:5, d:"2022-07-04", t:"Still going after four years", tags:["sunrise","sound"],
+    b:"Bought one of the early ones and it has run nearly every night since. The app has quietly got better and the hardware hasn't missed a sunrise." },
+  { n:"Ben A.", r:5, d:"2022-03-09", t:"Wake-ups feel gradual now", tags:["sunrise","shared"],
+    b:"Thirty minutes of warming light before the time I need to be up. I'm awake and calm before anything makes a sound. My heart isn't racing at 6am anymore." },
+  { n:"Stephanie K.", r:5, d:"2021-08-19", t:"Travels better than I expected", tags:["sound"],
+    b:"Hotel rooms, my sister's spare room, one very thin-walled cabin. Same sound, same routine, and jet lag has been noticeably kinder since." },
+  { n:"Ruth O.", r:5, d:"2020-09-12", t:"Simple enough for my parents", tags:["sunrise"],
+    b:"I set one up for my mum and she uses it without the app at all — two dials and it's done. She says the room feels calmer at night, which is exactly what I hoped for." },
+];
+
+const STAR = c => `<svg width="15" height="15" viewBox="0 0 24 24" fill="${c}" stroke="none"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 17.44 6.2 20.5l1.1-6.45-4.7-4.6 6.5-.95z"/></svg>`;
+const BADGE = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>`;
+const TAG_LABEL = { sound:"Sound", sunrise:"Sunrise alarm", nursery:"Nursery", shared:"Shared bed" };
+const fmt = iso => new Date(iso + "T00:00:00").toLocaleDateString("en-AU", { day:"numeric", month:"long", year:"numeric" });
+const starRow = (n, size) => Array.from({length:5}, (_,i) => STAR(i < n ? "var(--brand-yellow)" : "var(--hairline-strong)")).join("");
+
+document.querySelector(".summary .stars").innerHTML = starRow(5);
+
+const grid = document.getElementById("grid"), countEl = document.getElementById("count");
+function render(filter) {
+  const list = filter === "all" ? REVIEWS : REVIEWS.filter(r => r.tags.includes(filter));
+  grid.innerHTML = list.map(r => `<article class="card">
+    <div class="card-top">
+      <div><div class="who">${r.n}</div><div class="verified">${BADGE} Verified buyer</div></div>
+      <time class="date" datetime="${r.d}">${fmt(r.d)}</time>
+    </div>
+    <div class="stars" aria-label="${r.r} out of 5 stars">${starRow(r.r)}</div>
+    <h3>${r.t}</h3>
+    <p>${r.b}</p>
+    <div class="tags">${r.tags.map(t => `<span class="tag">${TAG_LABEL[t]}</span>`).join("")}</div>
+  </article>`).join("");
+  countEl.textContent = `Showing ${list.length} of ${REVIEWS.length} published reviews`;
+}
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+  document.querySelectorAll(".chip").forEach(o => o.setAttribute("aria-pressed", String(o === c)));
+  render(c.dataset.filter);
+}));
+render("all");
+
+[["navCta"],["ctaBottom"]].forEach(([id]) => document.getElementById(id).addEventListener("click", e => { e.preventDefault(); if (window.buyNow) buyNow(1); }));
+</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0d1f3c"/><path d="M50 26l7 14 15 2-11 11 3 16-14-8-14 8 3-16-11-11 15-2z" fill="#7793C7"/></svg></template>
+</body>
+</html>
