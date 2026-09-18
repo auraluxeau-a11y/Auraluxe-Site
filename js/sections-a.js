@@ -37,7 +37,7 @@ function SaleBanner() {
       letterSpacing: "0.1px",
       textAlign: "center"
     }
-  }, "Spring sale \u2014 20% off your first Auraluxe with code"), /*#__PURE__*/React.createElement("span", {
+  }, "Welcome sale \u2014 $20 off your first Auraluxe with code"), /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: "var(--font-body)",
       fontSize: 13,
@@ -48,7 +48,7 @@ function SaleBanner() {
       border: "1px solid rgba(255,255,255,0.28)",
       color: "#fff"
     }
-  }, "SPRING20"), /*#__PURE__*/React.createElement("span", {
+  }, "WELCOME20"), /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: "var(--font-body)",
       fontSize: 14,

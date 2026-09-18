@@ -623,8 +623,258 @@ function Comparison() {
     sw: 2
   }))))))))));
 }
+/* ---------- WELCOME PROMO POP-UP ---------- */
+function PromoModal({
+  delay = 6000
+}) {
+  const KEY = "aura.promo.welcome20.seen";
+  const [open, setOpen] = React.useState(false);
+  const [copied, setCopied] = React.useState(false);
+  const ctaRef = React.useRef(null);
+  const reduce = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  React.useEffect(() => {
+    let seen = false;
+    try {
+      seen = localStorage.getItem(KEY) === "1";
+    } catch (e) {}
+    if (seen) return;
+    const t = setTimeout(() => setOpen(true), delay);
+    return () => clearTimeout(t);
+  }, [delay]);
+  const close = React.useCallback(() => {
+    setOpen(false);
+    try {
+      localStorage.setItem(KEY, "1");
+    } catch (e) {}
+  }, []);
+  React.useEffect(() => {
+    if (!open) return;
+    const onKey = e => {
+      if (e.key === "Escape") close();
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    if (ctaRef.current) ctaRef.current.focus();
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, close]);
+  if (!open) return null;
+  const copy = () => {
+    const done = () => {
+      setCopied(true);
+      if (window.showToast) window.showToast("Code WELCOME20 copied");
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText("WELCOME20").then(done, done);else done();
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    role: "presentation",
+    onClick: close,
+    style: {
+      position: "fixed",
+      inset: 0,
+      zIndex: 120,
+      display: "grid",
+      placeItems: "center",
+      padding: 20,
+      background: "rgba(13,31,60,0.52)",
+      backdropFilter: "blur(3px)",
+      WebkitBackdropFilter: "blur(3px)",
+      animation: reduce ? "none" : "auraFade .28s cubic-bezier(.4,0,.2,1)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-labelledby": "promo-title",
+    onClick: e => e.stopPropagation(),
+    style: {
+      position: "relative",
+      width: "100%",
+      maxWidth: 460,
+      maxHeight: "calc(100dvh - 40px)",
+      background: "var(--canvas)",
+      borderRadius: "var(--r-xxxl)",
+      boxShadow: "var(--elev-4)",
+      overflow: "hidden auto",
+      textAlign: "center",
+      animation: reduce ? "none" : "auraRise .34s cubic-bezier(.4,0,.2,1)"
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    "aria-label": "Close",
+    onClick: close,
+    style: {
+      position: "absolute",
+      top: 14,
+      right: 14,
+      zIndex: 2,
+      width: 34,
+      height: 34,
+      borderRadius: "var(--r-full)",
+      background: "rgba(255,255,255,0.86)",
+      border: "none",
+      cursor: "pointer",
+      display: "grid",
+      placeItems: "center",
+      color: "var(--slate)"
+    }
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "X",
+    size: 16
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "relative",
+      height: "clamp(150px, 26dvh, 210px)",
+      background: "var(--brand-navy)",
+      overflow: "hidden"
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "assets/promo-welcome.png",
+    alt: "A dim bedroom at night, a warm bedside lamp glowing beside made-up pillows",
+    style: {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      objectPosition: "50% 62%",
+      display: "block"
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      inset: 0,
+      background: "radial-gradient(60% 70% at 50% 100%, rgba(240,192,96,0.30) 0%, rgba(13,31,60,0) 70%)"
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "26px 32px 30px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-body)",
+      fontSize: 11.5,
+      fontWeight: 600,
+      letterSpacing: "1.4px",
+      textTransform: "uppercase",
+      color: "var(--accent, var(--primary))"
+    }
+  }, "Welcome sale"), /*#__PURE__*/React.createElement("h2", {
+    id: "promo-title",
+    style: {
+      fontFamily: "var(--font-head)",
+      fontWeight: 600,
+      fontSize: 30,
+      letterSpacing: "-1.1px",
+      lineHeight: 1.1,
+      color: "var(--ink)",
+      margin: "12px 0 0"
+    }
+  }, "$20 off your first Glow"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: "var(--font-body)",
+      fontSize: 15.5,
+      lineHeight: 1.6,
+      color: "var(--charcoal)",
+      margin: "14px auto 0",
+      maxWidth: "32ch",
+      textWrap: "pretty"
+    }
+  }, "Sound, light and a gentler morning \u2014 $20 off your first one. Then sleep on it for 100 nights."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "baseline",
+      justifyContent: "center",
+      gap: 10,
+      marginTop: 20
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-head)",
+      fontWeight: 600,
+      fontSize: 26,
+      letterSpacing: "-0.8px",
+      color: "var(--ink)"
+    }
+  }, "$79.95"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-body)",
+      fontSize: 14.5,
+      color: "var(--steel)",
+      textDecoration: "line-through"
+    }
+  }, "$99.95")), /*#__PURE__*/React.createElement("button", {
+    onClick: copy,
+    style: {
+      marginTop: 18,
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 10,
+      fontFamily: "var(--font-body)",
+      fontSize: 13.5,
+      fontWeight: 600,
+      letterSpacing: "1.6px",
+      color: "var(--ink)",
+      background: "var(--surface)",
+      border: "1px dashed var(--hairline-strong)",
+      borderRadius: "var(--r-md)",
+      padding: "13px 16px",
+      cursor: "pointer"
+    }
+  }, "WELCOME20", /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 6,
+      fontSize: 12,
+      fontWeight: 500,
+      letterSpacing: "0.2px",
+      color: "var(--steel)"
+    }
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: copied ? "Check" : "Copy",
+    size: 14
+  }), copied ? "Copied" : "Copy")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 14
+    }
+  }, /*#__PURE__*/React.createElement(Button, {
+    variant: "primary",
+    size: "lg",
+    style: {
+      width: "100%"
+    },
+    onClick: () => {
+      close();
+      window.location.href = "glow.html";
+    }
+  }, "Shop the Glow")), /*#__PURE__*/React.createElement("button", {
+    onClick: close,
+    style: {
+      marginTop: 14,
+      background: "none",
+      border: "none",
+      cursor: "pointer",
+      fontFamily: "var(--font-body)",
+      fontSize: 13.5,
+      color: "var(--steel)",
+      textDecoration: "underline",
+      textUnderlineOffset: 3
+    }
+  }, "Maybe another night"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: "var(--font-body)",
+      fontSize: 11.5,
+      lineHeight: 1.5,
+      color: "var(--stone)",
+      margin: "16px 0 0"
+    }
+  }, "One use per customer, on your first Auraluxe order."))));
+}
 Object.assign(window, {
   LifestyleMosaic,
   Timeline,
-  Comparison
+  Comparison,
+  PromoModal
 });

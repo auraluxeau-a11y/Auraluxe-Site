@@ -13,8 +13,8 @@ function SaleBanner() {
   return (
     <div style={{ position: "relative", zIndex: 60, background: "var(--brand-navy)", color: "var(--on-dark)" }}>
       <div style={{ maxWidth: MAXW, margin: "0 auto", minHeight: 42, padding: "9px 44px", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, flexWrap: "wrap" }}>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 400, letterSpacing: "0.1px", textAlign: "center" }}>Spring sale — 20% off your first Auraluxe with code</span>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, letterSpacing: "1px", padding: "3px 10px", borderRadius: "var(--r-full)", border: "1px solid rgba(255,255,255,0.28)", color: "#fff" }}>SPRING20</span>
+        <span style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 400, letterSpacing: "0.1px", textAlign: "center" }}>Welcome sale — $20 off your first Auraluxe with code</span>
+        <span style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, letterSpacing: "1px", padding: "3px 10px", borderRadius: "var(--r-full)", border: "1px solid rgba(255,255,255,0.28)", color: "#fff" }}>WELCOME20</span>
         <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--on-dark-muted)" }}>at checkout.</span>
       </div>
       <button aria-label="Dismiss" onClick={() => setShow(false)}

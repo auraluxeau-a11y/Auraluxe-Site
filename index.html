@@ -35,6 +35,8 @@
     }
     @media (prefers-reduced-motion: reduce) { .aura-reveal { animation: none !important; opacity: 1 !important; transform: none !important; } }
 
+    @keyframes auraFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes auraRise { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: none; } }
     @keyframes compatScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .compat-marquee-track { animation: compatScroll 32s linear infinite; }
     .compat-marquee:hover .compat-marquee-track { animation-play-state: paused; }
@@ -223,6 +225,8 @@ function App() {
     onCta: cta
   }), /*#__PURE__*/React.createElement(Footer, {
     onSubscribe: subscribe
+  }), /*#__PURE__*/React.createElement(PromoModal, {
+    delay: 6000
   }), /*#__PURE__*/React.createElement(TweaksPanel, null, /*#__PURE__*/React.createElement(TweakSection, {
     label: "Brand"
   }), /*#__PURE__*/React.createElement(TweakColor, {
