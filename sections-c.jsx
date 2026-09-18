@@ -62,7 +62,7 @@ function LifestyleMosaic({ onCta }) {
                 <p style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "rgba(255,255,255,0.84)", lineHeight: 1.6, margin: "0 0 26px", maxWidth: 440 }}>
                   Dim the light, drop the noise, and let the room tell your body it's safe to rest. No screens, no spillover from the day - just the quiet you've been meaning to get back to.
                 </p>
-                <Button variant="onDark" size="lg" onClick={(e) => go(e, "#how")}>Build your ritual</Button>
+                <Button variant="onDark" size="lg" onClick={() => window.location.href = "glow.html"}>Build your ritual</Button>
               </div>
             </article>
 
@@ -104,7 +104,7 @@ function LifestyleMosaic({ onCta }) {
                     Phone-free nights - soothing soundscapes and a soft, warm light, all from the device itself, never a screen.
                   </p>
                 </div>
-                <a href="#features" onClick={(e) => go(e, "#features")} className="link-accent" style={{ position: "relative", fontFamily: "var(--font-body)", fontSize: 14.5, fontWeight: 500, color: "var(--brand-purple-300)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 7, marginTop: 20 }}>
+                <a href="glow.html#sound" className="link-accent" style={{ position: "relative", fontFamily: "var(--font-body)", fontSize: 14.5, fontWeight: 500, color: "var(--brand-purple-300)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 7, marginTop: 20 }}>
                   Explore the library <Icon name="ArrowRight" size={16} />
                 </a>
               </article>

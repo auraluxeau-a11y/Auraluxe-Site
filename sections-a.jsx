@@ -60,7 +60,7 @@ function TopNav({ onCta }) {
           ))}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div className="nav-cta-wrap"><Button variant="primary" onClick={onCta}>Start Sleeping Better - $99.95</Button></div>
+          <div className="nav-cta-wrap"><Button variant="primary" onClick={() => window.location.href = "glow.html"}>Start Sleeping Better - $99.95</Button></div>
           <button aria-label="Menu" className="nav-burger" onClick={() => setOpen((o) => !o)}
             style={{ display: "none", background: "none", border: "none", cursor: "pointer", padding: 6, color: "var(--ink)" }}>
             <Icon name={open ? "X" : "Menu"} size={24} />
@@ -73,7 +73,7 @@ function TopNav({ onCta }) {
             <a key={l.label} href={l.href} onClick={(e) => go(e, l.href)}
               style={{ fontFamily: "var(--font-body)", fontSize: 16, fontWeight: 500, color: "var(--charcoal)", textDecoration: "none", padding: "13px 0", borderBottom: "1px solid var(--hairline-soft)" }}>{l.label}</a>
           ))}
-          <div style={{ paddingTop: 16 }}><Button variant="primary" size="lg" onClick={onCta} style={{ width: "100%" }}>Start Sleeping Better - $99.95</Button></div>
+          <div style={{ paddingTop: 16 }}><Button variant="primary" size="lg" onClick={() => window.location.href = "glow.html"} style={{ width: "100%" }}>Start Sleeping Better - $99.95</Button></div>
         </div>
       )}
     </nav>
@@ -99,8 +99,7 @@ function Hero({ onCta }) {
           </Reveal>
           <Reveal delay={200}>
             <div className="hero-cta" style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>
-              <Button variant="primary" size="lg" onClick={onCta}>Start Sleeping Better - $99.95</Button>
-              <Button variant="secondary" size="lg" icon="Play" onClick={() => window.location.href = "how-it-works.html"}>See how it works</Button>
+              <Button variant="primary" size="lg" onClick={() => window.location.href = "glow.html"}>Start Sleeping Better - $99.95</Button>
             </div>
           </Reveal>
           <Reveal delay={230}>
@@ -251,8 +250,7 @@ function FeaturedIn({ onCta }) {
         </div>
         <Reveal delay={120}>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 14, marginTop: 52, flexWrap: "wrap" }}>
-            <Button variant="primary" size="lg" onClick={onCta}>Sleep better tonight</Button>
-            <Button variant="secondary" size="lg" icon="Play" onClick={() => window.location.href = "how-it-works.html"}>See how it works</Button>
+            <Button variant="primary" size="lg" onClick={() => window.location.href = "glow.html"}>Sleep better tonight</Button>
           </div>
         </Reveal>
       </div>

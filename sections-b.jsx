@@ -277,7 +277,7 @@ function FinalCta({ onCta }) {
           <p style={{ fontFamily: "var(--font-body)", fontSize: 18.5, color: "var(--slate)", lineHeight: 1.6, margin: "0 auto 34px", maxWidth: 480 }}>
             Bring Auraluxe home for 100 nights. If your sleep isn't calmer, send it back - we'll cover the shipping. No risk, just better mornings.
           </p>
-          <Button variant="primary" size="lg" onClick={onCta}>Get Better Sleep Tonight - $99.95</Button>
+          <Button variant="primary" size="lg" onClick={() => window.location.href = "glow.html"}>Get Better Sleep Tonight - $99.95</Button>
           <div style={{ fontFamily: "var(--font-body)", fontSize: 13.5, color: "var(--steel)", marginTop: 20, fontFeatureSettings: '"tnum"' }}>Free shipping · 100-night trial · 2-year warranty · Australian support</div>
         </div>
       </Reveal>

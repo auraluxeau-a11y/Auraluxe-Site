@@ -189,7 +189,7 @@ function LifestyleMosaic({
   }, "Dim the light, drop the noise, and let the room tell your body it's safe to rest. No screens, no spillover from the day - just the quiet you've been meaning to get back to."), /*#__PURE__*/React.createElement(Button, {
     variant: "onDark",
     size: "lg",
-    onClick: e => go(e, "#how")
+    onClick: () => window.location.href = "glow.html"
   }, "Build your ritual"))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
@@ -348,8 +348,7 @@ function LifestyleMosaic({
       maxWidth: 340
     }
   }, "Phone-free nights - soothing soundscapes and a soft, warm light, all from the device itself, never a screen.")), /*#__PURE__*/React.createElement("a", {
-    href: "#features",
-    onClick: e => go(e, "#features"),
+    href: "glow.html#sound",
     className: "link-accent",
     style: {
       position: "relative",

@@ -895,7 +895,7 @@ function FinalCta({
   }, "Bring Auraluxe home for 100 nights. If your sleep isn't calmer, send it back - we'll cover the shipping. No risk, just better mornings."), /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
     size: "lg",
-    onClick: onCta
+    onClick: () => window.location.href = "glow.html"
   }, "Get Better Sleep Tonight - $99.95"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "var(--font-body)",

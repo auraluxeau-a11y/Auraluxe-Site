@@ -178,7 +178,7 @@ function TopNav({
     className: "nav-cta-wrap"
   }, /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
-    onClick: onCta
+    onClick: () => window.location.href = "glow.html"
   }, "Start Sleeping Better - $99.95")), /*#__PURE__*/React.createElement("button", {
     "aria-label": "Menu",
     className: "nav-burger",
@@ -223,7 +223,7 @@ function TopNav({
   }, /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
     size: "lg",
-    onClick: onCta,
+    onClick: () => window.location.href = "glow.html",
     style: {
       width: "100%"
     }
@@ -319,13 +319,8 @@ function Hero({
   }, /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
     size: "lg",
-    onClick: onCta
-  }, "Start Sleeping Better - $99.95"), /*#__PURE__*/React.createElement(Button, {
-    variant: "secondary",
-    size: "lg",
-    icon: "Play",
-    onClick: () => window.location.href = "how-it-works.html"
-  }, "See how it works"))), /*#__PURE__*/React.createElement(Reveal, {
+    onClick: () => window.location.href = "glow.html"
+  }, "Start Sleeping Better - $99.95"))), /*#__PURE__*/React.createElement(Reveal, {
     delay: 230
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -773,13 +768,8 @@ function FeaturedIn({
   }, /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
     size: "lg",
-    onClick: onCta
-  }, "Sleep better tonight"), /*#__PURE__*/React.createElement(Button, {
-    variant: "secondary",
-    size: "lg",
-    icon: "Play",
-    onClick: () => window.location.href = "how-it-works.html"
-  }, "See how it works")))));
+    onClick: () => window.location.href = "glow.html"
+  }, "Sleep better tonight")))));
 }
 
 /* ---------- 3 · ALTERNATING SHOWCASE ---------- */
